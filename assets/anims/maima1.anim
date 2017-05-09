@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "maima1",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1.6333333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "47b80b95-9660-4046-965b-1cc1f8049b5f"
+            }
+          },
+          {
+            "frame": 1.4666666666666666,
+            "value": {
+              "__uuid__": "606ab31f-2572-41f2-9faf-e1d971fa2b8e"
+            }
+          },
+          {
+            "frame": 1.5,
+            "value": {
+              "__uuid__": "6f609650-7599-4f64-8ba7-2969d7d6bdc0"
+            }
+          },
+          {
+            "frame": 1.5333333333333334,
+            "value": {
+              "__uuid__": "2edd0ee9-dc2a-4085-bedf-7cf28e2cdd8b"
+            }
+          },
+          {
+            "frame": 1.5666666666666667,
+            "value": {
+              "__uuid__": "3f86c33e-9d5d-4fd7-932d-4eef65b73594"
+            }
+          },
+          {
+            "frame": 1.6,
+            "value": {
+              "__uuid__": "4ec661fb-c67a-4776-b03a-eebccf155a7c"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

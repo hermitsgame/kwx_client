@@ -1,0 +1,24 @@
+{
+  "appKey": "",
+  "appSecret": "",
+  "excludeScenes": [],
+  "includeAnySDK": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "inlineSpriteFrames": true,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "com.vivigames.scmj",
+  "privateKey": "",
+  "renderMode": "0",
+  "startScene": "4a1acad9-ce88-4334-aa62-bf23a5ccc79e",
+  "title": "DDMJ",
+  "webOrientation": "landscape"
+}

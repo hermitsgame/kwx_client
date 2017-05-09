@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <ele siteId="shiyan" suitype="1" suiproly="5" />
+    <ele siteId="shiyan" suitype="2" suiproly="30" />
+    <ele siteId="shiyan" suitype="3" suiproly="30" />
+    <ele siteId="shiyan" suitype="4" suiproly="30" />
+    <ele siteId="shiyan" suitype="5" suiproly="10" />
+    <ele siteId="shiyan" suitype="6" suiproly="20" />
+    <ele siteId="shiyan" suitype="7" suiproly="10" />
+    <ele siteId="shiyan" suitype="8" suiproly="50" />
+    <ele siteId="shiyan" suitype="9" suiproly="5" />
+    <ele siteId="shiyan" suitype="10" suiproly="20" />
+    <ele siteId="shiyan" suitype="11" suiproly="20" />
+    <ele siteId="shiyan" suitype="12" suiproly="50" />
+    <ele siteId="shiyan" suitype="13" suiproly="20" />
+    <ele siteId="shiyan" suitype="14" suiproly="30" />
+    <ele siteId="shiyan" suitype="15" suiproly="5" />
+    <ele siteId="shiyan" suitype="16" suiproly="20" />
+    
+    <ele siteId="xiangyang" suitype="1" suiproly="5" />
+    <ele siteId="xiangyang" suitype="2" suiproly="30" />
+    <ele siteId="xiangyang" suitype="3" suiproly="30" />
+    <ele siteId="xiangyang" suitype="4" suiproly="30" />
+    <ele siteId="xiangyang" suitype="5" suiproly="10" />
+    <ele siteId="xiangyang" suitype="6" suiproly="20" />
+    <ele siteId="xiangyang" suitype="7" suiproly="10" />
+    <ele siteId="xiangyang" suitype="8" suiproly="50" />
+    <ele siteId="xiangyang" suitype="9" suiproly="5" />
+    <ele siteId="xiangyang" suitype="10" suiproly="20" />
+    <ele siteId="xiangyang" suitype="11" suiproly="20" />
+    <ele siteId="xiangyang" suitype="12" suiproly="50" />
+    <ele siteId="xiangyang" suitype="13" suiproly="20" />
+    <ele siteId="xiangyang" suitype="14" suiproly="30" />
+    <ele siteId="xiangyang" suitype="15" suiproly="5" />
+    <ele siteId="xiangyang" suitype="16" suiproly="20" />
+    
+    <ele siteId="xiaogan" suitype="1" suiproly="5" />
+    <ele siteId="xiaogan" suitype="2" suiproly="30" />
+    <ele siteId="xiaogan" suitype="3" suiproly="30" />
+    <ele siteId="xiaogan" suitype="4" suiproly="30" />
+    <ele siteId="xiaogan" suitype="5" suiproly="10" />
+    <ele siteId="xiaogan" suitype="6" suiproly="20" />
+    <ele siteId="xiaogan" suitype="7" suiproly="10" />
+    <ele siteId="xiaogan" suitype="8" suiproly="50" />
+    <ele siteId="xiaogan" suitype="9" suiproly="5" />
+    <ele siteId="xiaogan" suitype="10" suiproly="20" />
+    <ele siteId="xiaogan" suitype="11" suiproly="20" />
+    <ele siteId="xiaogan" suitype="12" suiproly="50" />
+    <ele siteId="xiaogan" suitype="13" suiproly="20" />
+    <ele siteId="xiaogan" suitype="14" suiproly="30" />
+    <ele siteId="xiaogan" suitype="15" suiproly="5" />
+    <ele siteId="xiaogan" suitype="16" suiproly="20" />
+    
+    <ele siteId="suizhou" suitype="1" suiproly="5" />
+    <ele siteId="suizhou" suitype="2" suiproly="30" />
+    <ele siteId="suizhou" suitype="3" suiproly="30" />
+    <ele siteId="suizhou" suitype="4" suiproly="30" />
+    <ele siteId="suizhou" suitype="5" suiproly="10" />
+    <ele siteId="suizhou" suitype="6" suiproly="20" />
+    <ele siteId="suizhou" suitype="7" suiproly="10" />
+    <ele siteId="suizhou" suitype="8" suiproly="50" />
+    <ele siteId="suizhou" suitype="9" suiproly="5" />
+    <ele siteId="suizhou" suitype="10" suiproly="20" />
+    <ele siteId="suizhou" suitype="11" suiproly="20" />
+    <ele siteId="suizhou" suitype="12" suiproly="50" />
+    <ele siteId="suizhou" suitype="13" suiproly="20" />
+    <ele siteId="suizhou" suitype="14" suiproly="30" />
+    <ele siteId="suizhou" suitype="15" suiproly="5" />
+    <ele siteId="suizhou" suitype="16" suiproly="20" />
+    
+    <ele siteId="putong" suitype="1" suiproly="5" />
+    <ele siteId="putong" suitype="2" suiproly="30" />
+    <ele siteId="putong" suitype="3" suiproly="30" />
+    <ele siteId="putong" suitype="4" suiproly="30" />
+    <ele siteId="putong" suitype="5" suiproly="10" />
+    <ele siteId="putong" suitype="6" suiproly="20" />
+    <ele siteId="putong" suitype="7" suiproly="10" />
+    <ele siteId="putong" suitype="8" suiproly="50" />
+    <ele siteId="putong" suitype="9" suiproly="5" />
+    <ele siteId="putong" suitype="10" suiproly="20" />
+    <ele siteId="putong" suitype="11" suiproly="20" />
+    <ele siteId="putong" suitype="12" suiproly="50" />
+    <ele siteId="putong" suitype="13" suiproly="20" />
+    <ele siteId="putong" suitype="14" suiproly="30" />
+    <ele siteId="putong" suitype="15" suiproly="5" />
+    <ele siteId="putong" suitype="16" suiproly="20" />
+    
+</root>

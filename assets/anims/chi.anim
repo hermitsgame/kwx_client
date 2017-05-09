@@ -1,0 +1,73 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "new_hu",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1,
+  "sample": 20,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "e1f6e670-3eb7-491a-92cc-ce0f537db933"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "scaleX": [
+        {
+          "frame": 0,
+          "value": 2
+        },
+        {
+          "frame": 0.2,
+          "value": 2
+        },
+        {
+          "frame": 0.7,
+          "value": 1
+        },
+        {
+          "frame": 0.9,
+          "value": 1
+        }
+      ],
+      "scaleY": [
+        {
+          "frame": 0,
+          "value": 2
+        },
+        {
+          "frame": 0.2,
+          "value": 2
+        },
+        {
+          "frame": 0.7,
+          "value": 1
+        },
+        {
+          "frame": 0.9,
+          "value": 1
+        }
+      ],
+      "opacity": [
+        {
+          "frame": 0.9,
+          "value": 255
+        },
+        {
+          "frame": 1,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}

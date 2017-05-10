@@ -30,6 +30,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "platform/ios/CCEAGLView-ios.h"
+#import "VoiceSDK.h"
 
 @implementation AppController
 
@@ -108,11 +109,28 @@ static bool __isWxLogin = false;
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = title;
     message.description = desc;
-    [message setThumbImage:[UIImage imageNamed:@"res2.png"]];
+    [message setThumbImage:[UIImage imageNamed:@"Icon-29.png"]];
     
     WXWebpageObject *ext = [WXWebpageObject object];
     ext.webpageUrl = url;
     
+    message.mediaObject = ext;
+    
+    GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    resp.message = message;
+    resp.bText = NO;
+    
+    __isWxLogin = false;
+    [WXApi sendResp:resp];
+}
+
++(void) shareIMG:(NSString*)filePath width:(int)width height:(int)height
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    [message setThumbImage:[UIImage imageNamed:@"Icon-29.png"]];
+    
+    WXImageObject *ext = [WXImageObject object];
+    ext.imageData = [NSData dataWithContentsOfFile:filePath];
     message.mediaObject = ext;
     
     GetMessageFromWXResp* resp = [[[GetMessageFromWXResp alloc] init] autorelease];
@@ -145,9 +163,9 @@ static bool __isWxLogin = false;
             char tmp[255]= {0};
             const char* tcode = [code UTF8String];
             sprintf(tmp, "cc.vv.anysdkMgr.onLoginResp('%s')",tcode);
-            ScriptingCore::getInstance()->evalString(tmp, nullptr);
+            ScriptingCore::getInstance()->evalString(tmp);
         }else{
-            ScriptingCore::getInstance()->executeString("specialModule.nativelogincallback(null,'未知错误')");
+            //ScriptingCore::getInstance()->executeString("specialModule.nativelogincallback(null)");
         }
     }else{
         switch (resp.errCode) {
@@ -167,13 +185,11 @@ static bool __isWxLogin = false;
     __isWxLogin = false;
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     cocos2d::Director::getInstance()->resume();
-    //[self RespLinkContent];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -197,8 +213,6 @@ static bool __isWxLogin = false;
      See also applicationDidEnterBackground:.
      */
 }
-
-
 
 
 #pragma mark -

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "8c83ebbf-17ac-45b0-ad25-bebcef8ab308",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "715_KWX_LingFangKaBtn": {
+      "ver": "1.0.3",
+      "uuid": "8fcc4afc-7cc8-4b9a-8701-b16009e19632",
+      "rawTextureUuid": "8c83ebbf-17ac-45b0-ad25-bebcef8ab308",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 123,
+      "height": 60,
+      "rawWidth": 123,
+      "rawHeight": 60,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

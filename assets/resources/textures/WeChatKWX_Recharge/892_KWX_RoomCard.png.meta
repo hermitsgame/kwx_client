@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "26db7def-4209-429c-8dda-c6636f83fdbb",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "892_KWX_RoomCard": {
+      "ver": "1.0.3",
+      "uuid": "cf000c55-1904-43e7-8396-aa9afa8564cd",
+      "rawTextureUuid": "26db7def-4209-429c-8dda-c6636f83fdbb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 5,
+      "trimY": 2,
+      "width": 284,
+      "height": 411,
+      "rawWidth": 294,
+      "rawHeight": 413,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

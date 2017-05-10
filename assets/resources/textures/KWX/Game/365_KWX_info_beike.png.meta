@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "fefdc32a-4d1f-4304-8d36-c7931d6c280f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "365_KWX_info_beike": {
+      "ver": "1.0.3",
+      "uuid": "09831dea-5ed7-4399-b5cc-4f6b2b872022",
+      "rawTextureUuid": "fefdc32a-4d1f-4304-8d36-c7931d6c280f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 48,
+      "height": 48,
+      "rawWidth": 50,
+      "rawHeight": 48,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

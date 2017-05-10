@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "16f12805-ac69-4a19-bcb3-347c9410adff",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "505_KWX_selectGame_xiaogan1": {
+      "ver": "1.0.3",
+      "uuid": "dcf94ebd-c9d8-4ce2-851e-27614b6e421a",
+      "rawTextureUuid": "16f12805-ac69-4a19-bcb3-347c9410adff",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": -1,
+      "trimX": 2,
+      "trimY": 5,
+      "width": 277,
+      "height": 330,
+      "rawWidth": 282,
+      "rawHeight": 338,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

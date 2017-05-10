@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "4ab83f67-b5a0-4a88-9fd5-8884a5168b2f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "535_KWX_setting_switch_thumb": {
+      "ver": "1.0.3",
+      "uuid": "2ba73977-0a85-49d3-86c5-ab96dfe7496b",
+      "rawTextureUuid": "4ab83f67-b5a0-4a88-9fd5-8884a5168b2f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 14,
+      "trimY": 12,
+      "width": 52,
+      "height": 55,
+      "rawWidth": 80,
+      "rawHeight": 80,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

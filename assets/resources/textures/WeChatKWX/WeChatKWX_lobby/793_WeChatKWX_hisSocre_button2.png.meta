@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "8acbe0f1-5bfc-4e30-83fe-c8f44e74b147",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "793_WeChatKWX_hisSocre_button2": {
+      "ver": "1.0.3",
+      "uuid": "6a5d6a89-83b5-4896-9f52-adba5376af32",
+      "rawTextureUuid": "8acbe0f1-5bfc-4e30-83fe-c8f44e74b147",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -5.5,
+      "offsetY": 6,
+      "trimX": 3,
+      "trimY": 5,
+      "width": 128,
+      "height": 123,
+      "rawWidth": 145,
+      "rawHeight": 145,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

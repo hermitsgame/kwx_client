@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "6aaeff91-ce22-440e-9141-24439fa489d7",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "494_KWX_lobby_difen_number": {
+      "ver": "1.0.3",
+      "uuid": "31be8a3d-f868-40d1-99f6-2dd5ca10aee4",
+      "rawTextureUuid": "6aaeff91-ce22-440e-9141-24439fa489d7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 277,
+      "height": 36,
+      "rawWidth": 280,
+      "rawHeight": 36,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

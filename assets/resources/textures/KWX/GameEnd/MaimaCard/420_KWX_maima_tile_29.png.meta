@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "f15743b0-0d50-41be-80a0-a1e592b120b3",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "420_KWX_maima_tile_29": {
+      "ver": "1.0.3",
+      "uuid": "eabc9a2c-9994-4a8d-bfa2-d2597665e250",
+      "rawTextureUuid": "f15743b0-0d50-41be-80a0-a1e592b120b3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 4,
+      "trimY": 4,
+      "width": 87,
+      "height": 107,
+      "rawWidth": 96,
+      "rawHeight": 116,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

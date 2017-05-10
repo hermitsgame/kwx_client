@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "04940e14-3806-4629-be44-b0b651acbee8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "804_WeChatKWX_joinGame_button": {
+      "ver": "1.0.3",
+      "uuid": "8e5ccbc6-e4f5-42f9-ad3e-e820d85947cb",
+      "rawTextureUuid": "04940e14-3806-4629-be44-b0b651acbee8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 467,
+      "height": 172,
+      "rawWidth": 468,
+      "rawHeight": 173,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

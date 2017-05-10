@@ -26018,7 +26018,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 0,
-      "height": 49.78
+      "height": 54.79
     },
     "_children": [],
     "_rotationX": 0,
@@ -26058,9 +26058,9 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 46,
-    "_fontSize": 46,
-    "_lineHeight": 40,
+    "_actualFontSize": 45,
+    "_fontSize": 45,
+    "_lineHeight": 45,
     "_enableWrapText": true,
     "_N$file": {
       "__uuid__": "b057462b-1b3e-4398-89c5-24df914da8b7"
@@ -30107,7 +30107,7 @@
       "width": 1280,
       "height": 720
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true
   },
   {
@@ -30161,7 +30161,8 @@
     "_gameItemTemp": null,
     "_historyData": null,
     "_curRoomInfo": null,
-    "_emptyTip": null
+    "_emptyTip": null,
+    "_others": null
   },
   {
     "__type__": "c12553sxCxG/on0Bz7rkX0f",

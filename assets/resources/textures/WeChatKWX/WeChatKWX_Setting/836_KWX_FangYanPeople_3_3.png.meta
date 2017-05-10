@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "051c80fb-78f9-4cfc-b438-81a8e2c005e0",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "836_KWX_FangYanPeople_3_3": {
+      "ver": "1.0.3",
+      "uuid": "057821bd-0cd5-46a4-b845-a8f484f2aec1",
+      "rawTextureUuid": "051c80fb-78f9-4cfc-b438-81a8e2c005e0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 224,
+      "height": 37,
+      "rawWidth": 230,
+      "rawHeight": 40,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "441f21cc-11e3-487c-a4df-df4fac1620a0",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "885_KWX_BuyCoinBtn3": {
+      "ver": "1.0.3",
+      "uuid": "96a0f26a-c89d-4a4b-b804-24711664c1eb",
+      "rawTextureUuid": "441f21cc-11e3-487c-a4df-df4fac1620a0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 167,
+      "height": 76,
+      "rawWidth": 168,
+      "rawHeight": 76,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

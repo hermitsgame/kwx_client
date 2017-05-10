@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "6870aa06-e1e5-4d1a-ae5d-59d7245c46e9",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "454_KWX_piao_bupiao1": {
+      "ver": "1.0.3",
+      "uuid": "72d63f1a-3d12-41d3-9deb-9d80e1591595",
+      "rawTextureUuid": "6870aa06-e1e5-4d1a-ae5d-59d7245c46e9",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 207,
+      "height": 89,
+      "rawWidth": 209,
+      "rawHeight": 91,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

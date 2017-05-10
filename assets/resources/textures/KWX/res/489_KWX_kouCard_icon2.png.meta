@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "03a51ccb-c3ab-4bf0-8a13-1f396fa43d8f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "489_KWX_kouCard_icon2": {
+      "ver": "1.0.3",
+      "uuid": "d0c3529a-05e6-4739-893b-b52eda0858f7",
+      "rawTextureUuid": "03a51ccb-c3ab-4bf0-8a13-1f396fa43d8f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 229,
+      "height": 91,
+      "rawWidth": 229,
+      "rawHeight": 91,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

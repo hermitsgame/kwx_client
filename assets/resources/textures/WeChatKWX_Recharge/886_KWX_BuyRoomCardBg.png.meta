@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "237d3197-04cb-4aec-a491-f524a25bf04e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "886_KWX_BuyRoomCardBg": {
+      "ver": "1.0.3",
+      "uuid": "1ac19a98-9062-40c0-9c3f-413d134aeeea",
+      "rawTextureUuid": "237d3197-04cb-4aec-a491-f524a25bf04e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1280,
+      "height": 720,
+      "rawWidth": 1280,
+      "rawHeight": 720,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

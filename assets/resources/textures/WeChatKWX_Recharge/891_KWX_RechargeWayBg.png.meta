@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "7c371c9f-f36b-4300-87ba-ec2446a59d25",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "891_KWX_RechargeWayBg": {
+      "ver": "1.0.3",
+      "uuid": "9196b2c4-5f59-470c-854b-63d8fc427adf",
+      "rawTextureUuid": "7c371c9f-f36b-4300-87ba-ec2446a59d25",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 706,
+      "height": 511,
+      "rawWidth": 710,
+      "rawHeight": 513,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

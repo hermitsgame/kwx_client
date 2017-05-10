@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "a5612685-8f3b-4301-ae5a-dae966cb931d",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "392_KWX_gameEnd_maima_Fan": {
+      "ver": "1.0.3",
+      "uuid": "7f7916f2-9781-4157-9a52-b50cb165a246",
+      "rawTextureUuid": "a5612685-8f3b-4301-ae5a-dae966cb931d",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 63,
+      "height": 60,
+      "rawWidth": 63,
+      "rawHeight": 60,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

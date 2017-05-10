@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "a12adfd8-1f1a-4fbb-88e6-47f19e43e283",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "441_KWX_head_microphone": {
+      "ver": "1.0.3",
+      "uuid": "1f4b5839-99e1-4acb-b2b5-89bcf90d4878",
+      "rawTextureUuid": "a12adfd8-1f1a-4fbb-88e6-47f19e43e283",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 7,
+      "trimY": 8,
+      "width": 85,
+      "height": 83,
+      "rawWidth": 100,
+      "rawHeight": 100,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

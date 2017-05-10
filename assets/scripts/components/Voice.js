@@ -61,6 +61,19 @@ cc.Class({
 
             btnVoice.on(cc.Node.EventType.TOUCH_MOVE, function(event) {
                 console.log("cc.Node.EventType.TOUCH_MOVE");
+
+				var target = event.getCurrentTarget();
+				var touches = event.getTouches();
+				var locationInNode = target.convertTouchToNodeSpaceAR(touches[0]);
+
+				var s = target.getContentSize();
+				var rect = cc.rect(0 - s.width / 2, 0 - s.height / 2, s.width, s.height);
+
+				if (cc.rectContainsPoint(rect, locationInNode)) {
+					self.enterState(2);
+				} else {
+					self.enterState(1);
+				}
             });
                         
             btnVoice.on(cc.Node.EventType.TOUCH_END, function(event) {

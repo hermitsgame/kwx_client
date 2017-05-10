@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "224e4615-6aa8-45af-9cce-97c81061a568",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "778_WeChatKWX_charge_frame": {
+      "ver": "1.0.3",
+      "uuid": "353d886e-a922-45e5-86ac-2bd0b03ab3dc",
+      "rawTextureUuid": "224e4615-6aa8-45af-9cce-97c81061a568",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 1,
+      "trimY": 2,
+      "width": 621,
+      "height": 471,
+      "rawWidth": 623,
+      "rawHeight": 473,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

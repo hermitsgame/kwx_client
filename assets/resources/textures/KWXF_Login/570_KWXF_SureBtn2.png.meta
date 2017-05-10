@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "4b54a102-b341-402b-a564-c3ac2613ff1f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "570_KWXF_SureBtn2": {
+      "ver": "1.0.3",
+      "uuid": "b593767c-9c53-4264-95c1-1175ba3fc7e3",
+      "rawTextureUuid": "4b54a102-b341-402b-a564-c3ac2613ff1f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 201,
+      "height": 73,
+      "rawWidth": 201,
+      "rawHeight": 73,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

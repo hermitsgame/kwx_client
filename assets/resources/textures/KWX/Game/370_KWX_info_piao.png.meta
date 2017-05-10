@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "d44a2931-93c1-4242-8419-184d4c98f806",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "370_KWX_info_piao": {
+      "ver": "1.0.3",
+      "uuid": "8cdce0c6-30e7-4bf9-b87e-f279a9682954",
+      "rawTextureUuid": "d44a2931-93c1-4242-8419-184d4c98f806",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 30,
+      "height": 30,
+      "rawWidth": 30,
+      "rawHeight": 30,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

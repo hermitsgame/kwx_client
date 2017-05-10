@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "7f422b8c-8db6-4d9d-8f93-754b269fa7f1",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "428_KWX_game_peng_normal": {
+      "ver": "1.0.3",
+      "uuid": "ddc800ce-bbfe-47d1-a274-88dc9187a38c",
+      "rawTextureUuid": "7f422b8c-8db6-4d9d-8f93-754b269fa7f1",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1.5,
+      "offsetY": 0.5,
+      "trimX": 2,
+      "trimY": 7,
+      "width": 163,
+      "height": 155,
+      "rawWidth": 170,
+      "rawHeight": 170,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

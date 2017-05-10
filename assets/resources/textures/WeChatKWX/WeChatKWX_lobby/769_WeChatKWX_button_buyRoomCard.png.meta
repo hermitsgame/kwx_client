@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "36a80077-8a54-4c11-915e-930056e89b5e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "769_WeChatKWX_button_buyRoomCard": {
+      "ver": "1.0.3",
+      "uuid": "b51097ad-c133-418d-b126-83d3abd924fd",
+      "rawTextureUuid": "36a80077-8a54-4c11-915e-930056e89b5e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -6,
+      "offsetY": 8,
+      "trimX": 2,
+      "trimY": 0,
+      "width": 129,
+      "height": 129,
+      "rawWidth": 145,
+      "rawHeight": 145,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

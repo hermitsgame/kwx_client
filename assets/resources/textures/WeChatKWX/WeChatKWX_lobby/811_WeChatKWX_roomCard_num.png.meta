@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "20e57584-f776-42d5-9652-31dbaaa9f8e0",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "811_WeChatKWX_roomCard_num": {
+      "ver": "1.0.3",
+      "uuid": "5e972bc3-cee8-42cd-a05a-ced0eebaf288",
+      "rawTextureUuid": "20e57584-f776-42d5-9652-31dbaaa9f8e0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -0.5,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 159,
+      "height": 23,
+      "rawWidth": 160,
+      "rawHeight": 24,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "09b4cea8-7a36-489c-92f3-aeae620b7795",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "875_WeChat_jiesanBtn1": {
+      "ver": "1.0.3",
+      "uuid": "e23f47d6-0b39-4cf6-9514-5ae0a07e63e5",
+      "rawTextureUuid": "09b4cea8-7a36-489c-92f3-aeae620b7795",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 201,
+      "height": 73,
+      "rawWidth": 202,
+      "rawHeight": 74,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -58,11 +58,13 @@ cc.Class({
             cvs.fitHeight = true;
             cvs.fitWidth = true;
         }
+
         if (!cc.vv) {
 			console.log('load loading');
             cc.director.loadScene("loading");
             return;
         }
+
         this.initLabels();
 
         var imgLoader = this.sprHeadImg.node.getComponent("ImageLoader");

@@ -15,6 +15,8 @@ cc.Class({
         settingsWin:cc.Node,
         helpWin:cc.Node,
         sprHeadImg:cc.Sprite,
+
+		shopWin: cc.Node,
     },
     
     initNetHandlers: function() {
@@ -135,7 +137,7 @@ cc.Class({
 		tl.runAction(cc.fadeTo(0.8, 255));
     },
     
-    refreshInfo:function(){
+    refreshInfo: function() {
         var self = this;
         var onGet = function(ret){
             if(ret.errcode !== 0){
@@ -200,7 +202,7 @@ cc.Class({
     
     initButtonHandler: function(btnPath) {
         var btn = cc.find(btnPath);
-        cc.vv.utils.addClickEvent(btn,this.node,"Hall","onBtnClicked");        
+        cc.vv.utils.addClickEvent(btn,this.node,"Hall","onBtnClicked");
     },
     
     initLabels:function(){
@@ -216,11 +218,14 @@ cc.Class({
     onBtnClicked: function(event) {
         cc.vv.audioMgr.playButtonClicked();
 
-        if (event.target.name == "btn_shezhi") {
+		var name = event.target.name;
+
+        if (name == "btn_shezhi") {
 			cc.vv.utils.showDialog(this.settingsWin, 'body', true);
-        }   
-        else if (event.target.name == "btn_help") {
+        } else if (name == "btn_help") {
 			cc.vv.utils.showFrame(this.helpWin, 'head', 'body', true);
+        } else if (name == 'btn_buy') {
+			cc.vv.utils.showFrame(this.shopWin, 'head', 'body', true);
         }
     },
     
@@ -236,8 +241,7 @@ cc.Class({
     onBtnAddGemsClicked:function() {
         cc.vv.audioMgr.playButtonClicked();
 
-        cc.vv.alert.show(cc.vv.userMgr.gemstip.msg);
-        this.refreshInfo();
+        cc.vv.utils.showFrame(this.shopWin, 'head', 'body', true);
     },
     
     onCreateRoomClicked:function(){

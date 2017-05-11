@@ -104,10 +104,8 @@ cc.Class({
     onBtnWeichatClicked: function() {
         cc.vv.audioMgr.playButtonClicked();
         if (this._agreeCheck.checked) {
-			setTimeout(function() {
-				cc.vv.wc.show();
-				cc.vv.anysdkMgr.login();
-			}, 100);
+			cc.vv.wc.show();
+			cc.vv.anysdkMgr.login();
         } else {
             cc.vv.alert.show("您必须先同意用户协议！", null, false);
         }

@@ -14,7 +14,7 @@ cc.Class({
         createRoomWin:cc.Node,
         settingsWin:cc.Node,
         helpWin:cc.Node,
-        sprHeadImg:cc.Sprite,
+        sprHeadImg: cc.Node,
 
 		shopWin: cc.Node,
     },
@@ -69,7 +69,7 @@ cc.Class({
 
         this.initLabels();
 
-        var imgLoader = this.sprHeadImg.node.getComponent("ImageLoader");
+        var imgLoader = this.sprHeadImg.getComponent("ImageLoader");
         imgLoader.setUserID(cc.vv.userMgr.userId);
         
         this.initButtonHandler("Canvas/top_right/btn_shezhi");

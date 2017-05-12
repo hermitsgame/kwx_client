@@ -502,11 +502,11 @@ cc.Class({
 			for (var i = 0; i <  self.seats.length; ++i) {
                 self.seats[i].score += scores[i];
             }
-
+/*
 			for (var i = 0; i <  self.seats.length; ++i) {
                 self.dispatchEvent('user_state_changed', self.seats[i]);
             }
-
+*/
             self.doGang(si, pai, data.gangtype, fan, scores);
         });
         
@@ -689,11 +689,11 @@ cc.Class({
                 seatData.kou.splice(id, 1);
             }
         }
-        
-        if(gangtype == "angang"){
+
+        if (gangtype == "angang") {
             seatData.angangs.push(pai);
         }
-        else if(gangtype == "diangang"){
+        else if(gangtype == "diangang") {
             seatData.diangangs.push(pai);
         }
 
@@ -701,7 +701,7 @@ cc.Class({
 			return;
 		}
 
-        this.dispatchEvent('gang_notify', {seatData:seatData,gangtype:gangtype, fan: fan, scores: scores});
+        this.dispatchEvent('gang_notify', { seatData: seatData, gangtype: gangtype, fan: fan, scores: scores});
     },
     
     doHu: function(data, skip) {

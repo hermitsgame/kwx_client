@@ -44,11 +44,16 @@ function getBaseInfo(userid,callback){
         callback(userid,cc.vv.baseInfoMap[userid]);
     }
     else{
-        cc.vv.http.sendRequest('/base_info',{userid:userid},function(ret){
+        cc.vv.http.sendRequest('/base_info', { userid: userid} , function(ret) {
             var url = null;
-            if(ret.headimgurl){
+
+            if (ret.headimgurl) {
                url = ret.headimgurl + ".jpg";
+			   
             }
+
+			console.log('url=' + url);
+
             var info = {
                 name:ret.name,
                 sex:ret.sex,
@@ -81,25 +86,27 @@ cc.Class({
         this.setupSpriteFrame();
     },
     
-    setUserID:function(userid){
-        if(cc.sys.isNative == false){
-            return;
-        }
-        if(!userid){
-            return;
-        }
-        if(cc.vv.images == null){
+    setUserID:function(userid) {
+		if (!cc.sys.isNative) {
+			return;
+		}
+
+		if (!userid) {
+			return;
+		}
+
+        if (cc.vv.images == null) {
             cc.vv.images = {};
         }
-        
+
         var self = this;
-        getBaseInfo(userid,function(code,info){
-           if(info && info.url){
+        getBaseInfo(userid, function(code,info) {
+           if (info && info.url) {
                 loadImage(info.url,userid,function (err,spriteFrame) {
                     self._spriteFrame = spriteFrame;
                     self.setupSpriteFrame();
                 });   
-            } 
+            }
         });
     },
     

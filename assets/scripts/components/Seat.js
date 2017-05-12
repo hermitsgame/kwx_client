@@ -12,6 +12,9 @@ cc.Class({
         _info: null,
         _sprBG: null,
 
+		_lblWin: null,
+		_lblLose: null,
+
         _chat:null,
         _emoji:null,
         _lastChatTime:-1,
@@ -36,7 +39,7 @@ cc.Class({
         this._lblScore = this.node.getChildByName("score").getComponent(cc.Label);
         this._voicemsg = this.node.getChildByName("voicemsg");
         this._info = this.node.getChildByName("info");
-        
+
         var bg = this.node.getChildByName("bg");
         if (bg) {
             this._sprBG = bg.getComponent("SpriteMgr");
@@ -69,6 +72,16 @@ cc.Class({
         if (this._chat) {
             this._chat.active = false;
         }
+
+		this._lblWin = this.node.getChildByName('lblWin');
+		if (this._lblWin) {
+			this._lblWin.active = false;
+		}
+
+		this._lblLose = this.node.getChildByName('lblLose');
+		if (this._lblLose) {
+			this._lblLose.active = false;
+		}
 /*
         this._emoji = this.node.getChildByName("emoji");
         if(this._emoji != null){
@@ -155,20 +168,23 @@ cc.Class({
     setInfo: function(name, score) {
         this._userName = name;
 
-        if(score == null){
-            score = 0;
-        }
-        
-        this._score = score;
-
-        if(this._lblScore != null){
-            this._lblScore.node.active = this._score != null;            
-        }
-
+		this.setScore(score);
         this.refresh();    
     },
-    
-    setZhuang:function(value){
+
+	setScore: function(score) {
+		if (score == null) {
+            score = 0;
+        }
+
+        this._score = score;
+
+        if (this._lblScore != null) {
+            this._lblScore.node.active = this._score != null;
+        }
+    },
+
+    setZhuang: function(value) {
         this._isZhuang = value;
         if(this._zhuang){
             this._zhuang.active = value;
@@ -247,7 +263,42 @@ cc.Class({
             this._voicemsg.active = show;
         }
     },
-   
+
+	updateScore: function(score, add) {
+		if (0 == add) {
+			return;
+		}
+
+		var node = add > 0 ? this._lblWin : this._lblLose;
+
+		if (!node) {
+			return;
+		}
+
+		var label = node.getComponent(cc.Label);
+
+		node.opacity = 255;
+		node.active = true;
+
+		if (add > 0) {
+			label.string = ':' + add;
+		} else {
+			label.string = ':' + (0 - add);
+		}
+
+		var self = this;
+
+		var fnUpdate = cc.callFunc(function(target, data) {
+			data.active = false;
+			self.setScore(score);
+			self.refresh();
+		}, this, node);
+
+		var action = cc.sequence(cc.delayTime(0.3), cc.fadeTo(0.3, 0), fnUpdate);
+
+		node.runAction(action);
+    },
+
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
         if (this._lastChatTime > 0) {
@@ -258,3 +309,4 @@ cc.Class({
         }
     },
 });
+

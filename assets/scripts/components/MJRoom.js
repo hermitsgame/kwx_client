@@ -90,7 +90,20 @@ cc.Class({
         this.node.on('ming_notify', function(data) {
             self.initSingleSeat(data.detail);
         });
-        
+
+		this.node.on('gang_notify', function(data) {
+			var data = data.detail;
+			var scores = data.scores;
+
+			for (var i = 0; i < scores.length; i++) {
+				var index = cc.vv.gameNetMgr.getLocalIndex(i);
+				var seat = cc.vv.gameNetMgr.seats[i];
+				var _seat = self._seats[index];
+
+				_seat.updateScore(seat.score, scores[i]);
+			}
+        });
+
         this.node.on('voice_msg',function(data){
             var data = data.detail;
             self._voiceMsgQueue.push(data);

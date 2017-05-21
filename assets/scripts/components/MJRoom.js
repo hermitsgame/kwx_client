@@ -91,9 +91,13 @@ cc.Class({
             self.initSingleSeat(data.detail);
         });
 
-		this.node.on('gang_notify', function(data) {
-			var data = data.detail;
+		this.node.on('gang_notify', function(info) {
+			var data = info.detail;
 			var scores = data.scores;
+
+			if (cc.vv.replayMgr.isReplay()) {
+				return;
+			}
 
 			for (var i = 0; i < scores.length; i++) {
 				var index = cc.vv.gameNetMgr.getLocalIndex(i);

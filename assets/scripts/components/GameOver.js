@@ -485,30 +485,26 @@ cc.Class({
                     continue;
                 }
 
-                if (flag == "angang") {
+				board.spriteFrame = mgr.getBoardSpriteFrame(side, "end");
+				tile.spriteFrame = mgr.getTileSpriteFrame(side, "end", mjid);
+            } else {
+	            if (flag == "angang") {
                     board.spriteFrame = mgr.getAnySpriteFrame(side, "end_background");
                     tile.spriteFrame = null;
                 } else {
-                    board.spriteFrame = mgr.getBoardSpriteFrame(side, "end");
-                    
-                    var sprite = mgr.getTileSpriteFrame(side, "end", mjid);
-                    tile.spriteFrame = sprite;
+					board.spriteFrame = mgr.getBoardSpriteFrame(side, "end");
+					tile.spriteFrame = mgr.getTileSpriteFrame(side, "end", mjid);
                 }
-            } else {
-                board.spriteFrame = mgr.getBoardSpriteFrame(side, "end");
-    
-                var sprite = mgr.getTileSpriteFrame(side, "end", mjid);
-                tile.spriteFrame = sprite;
             }
         }
     },
     
-    onBtnReadyClicked:function(){
+    onBtnReadyClicked: function() {
         console.log("onBtnReadyClicked");
-        if(this._isGameEnd){
+        if (this._isGameEnd) {
             this._gameresult.active = true;
         }
-        else{
+        else {
             cc.vv.net.send('ready');   
         }
         this._gameover.active = false;

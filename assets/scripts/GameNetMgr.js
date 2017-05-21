@@ -421,7 +421,8 @@ cc.Class({
             var results = data.results;
             for (var i = 0; i <  self.seats.length; ++i) {
                 self.seats[i].score = results.length == 0 ? 0:results[i].totalscore;
-            }
+            }
+
 
             self.dispatchEvent('game_over', data);
             if (data.endinfo) {
@@ -566,8 +567,9 @@ cc.Class({
 
     doMopai:function(seatIndex, pai, skip) {
         var seatData = this.seats[seatIndex];
-        if(seatData.holds){
-            seatData.holds.push(pai);
+		var holds = seatData.holds;
+        if (holds != null && holds.length > 0 && pai >= 0) {
+            holds.push(pai);
         }
 
 		if (skip) {
@@ -580,37 +582,45 @@ cc.Class({
     doChupai: function(seatIndex, pai, skip) {
         this.chupai = pai;
         var seatData = this.seats[seatIndex];
-        if(seatData.holds){             
-            var idx = seatData.holds.indexOf(pai);
-            seatData.holds.splice(idx,1);
+		var holds = seatData.holds;
+		
+        if (holds != null && holds.length > 0) {             
+            var idx = holds.indexOf(pai);
+			if (idx != -1) {
+ 	           holds.splice(idx, 1);
+			}
         }
 
 		if (skip) {
 			return;
 		}
 
-        this.dispatchEvent('game_chupai_notify',{seatData:seatData,pai:pai});    
+        this.dispatchEvent('game_chupai_notify', { seatData: seatData, pai: pai });    
     },
 
     doPeng: function(seatIndex, pai, skip) {
         var seatData = this.seats[seatIndex];
-        //移除手牌
-        if(seatData.holds){
-            for(var i = 0; i < 2; ++i){
-                var idx = seatData.holds.indexOf(pai);
-                seatData.holds.splice(idx,1);
-            }                
+		var holds = seatData.holds;
+
+        if (holds != null && holds.length > 0) {
+            for (var i = 0; i < 2; ++i) {
+                var idx = holds.indexOf(pai);
+				if (idx == -1) {
+					break;
+				}
+
+				holds.splice(idx, 1);
+            }
         }
-            
-        //更新碰牌数据
+
         var pengs = seatData.pengs;
         pengs.push(pai);
 
 		if (skip) {
 			return;
 		}
-   
-        this.dispatchEvent('peng_notify', seatData);
+
+        this.dispatchEvent('peng_notify', { seatData: seatData, pai: pai });
     },
     
     doMing:function(seatIndex, holds, tings, kou, skip) {
@@ -658,7 +668,10 @@ cc.Class({
     
     doGang: function(seatIndex, pai, gangtype, fan, scores, skip) {
         var seatData = this.seats[seatIndex];
-        
+		var holds = seatData.holds;
+
+		console.log('doGang, si=' + seatIndex);
+		
         if(!gangtype){
             gangtype = this.getGangType(seatData,pai);
         }
@@ -672,17 +685,18 @@ cc.Class({
             }
             seatData.wangangs.push(pai);
         }
-        if(seatData.holds){
-            for(var i = 0; i <= 4; ++i){
-                var idx = seatData.holds.indexOf(pai);
-                if(idx == -1){
-                    //如果没有找到，表示移完了，直接跳出循环
+
+        if (holds != null && holds.length > 0) {
+            for (var i = 0; i < 4; ++i) {
+                var idx = holds.indexOf(pai);
+                if (idx == -1) {
                     break;
                 }
-                seatData.holds.splice(idx,1);
+
+                holds.splice(idx, 1);
             }
         }
-        
+		
         if (seatData.kou) {
             var id = seatData.kou.indexOf(pai);
             if (id != -1) {
@@ -701,7 +715,7 @@ cc.Class({
 			return;
 		}
 
-        this.dispatchEvent('gang_notify', { seatData: seatData, gangtype: gangtype, fan: fan, scores: scores});
+        this.dispatchEvent('gang_notify', { seatData: seatData, gangtype: gangtype, pai: pai, fan: fan, scores: scores});
     },
     
     doHu: function(data, skip) {
@@ -709,7 +723,7 @@ cc.Class({
 			return;
 		}
 
-        this.dispatchEvent('hupai',data);
+        this.dispatchEvent('hupai', data);
     },
     
     doTurnChange: function(si, skip) {
@@ -778,8 +792,8 @@ cc.Class({
     },
 
 	getChuPaiList: function() {
-		var seats = this.seats;
-		var holds = seats[this.seatIndex].holds;
+		var seat = this.seats[this.seatIndex];
+		var holds = seat.holds;
 		var chupais = [];
 
 		for (var i = 0; i < holds.length; i++) {
@@ -794,7 +808,6 @@ cc.Class({
     },
 
     refreshMJ: function(data) {
-        console.log('refreshMJ');
         this.dispatchEvent("refresh_mj");
     },
 

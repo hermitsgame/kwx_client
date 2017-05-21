@@ -1,3 +1,4 @@
+
 cc.Class({
     extends: cc.Component,
 
@@ -14,16 +15,22 @@ cc.Class({
     onLoad: function() {
         this.initView();
     },
-    
+
     initView: function() {
         var name = this.node.name;
         var strs = new Array();
+		var dir = null;
 
         strs = name.split("_");
         if (strs.length >= 2) {
-            this._direction = strs[0];
-            this._location = strs[1];
+            dir = strs[0];
         }
+
+		var dirs = [ 'south', 'east', 'north', 'west' ];
+		if (dirs.indexOf(dir) != -1) {
+			this._direction = dir;
+			this._location = name.substring(dir.length + 1);
+		}
 
         this.refresh();
     },
@@ -100,9 +107,17 @@ cc.Class({
 		var focus = this.node.getChildByName('focus');
 		if (focus) {
 			focus.active = status;
+			focus.opacity = 0;
 		}
     },
-    
+
+	showFocus: function() {
+		var focus = this.node.getChildByName('focus');
+		if (focus && focus.active) {
+			focus.opacity = 255;
+		}
+    },
+	
     setInteractable: function(status) {
         var mask = this.node.getChildByName("mask");
         if (mask) {
@@ -128,3 +143,4 @@ cc.Class({
 		}
     },
 });
+

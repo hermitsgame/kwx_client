@@ -11,9 +11,8 @@ cc.Class({
         //    readonly: false,    // optional, default is false
         // },
         // ...
-        _folds:null,
+        _folds: null,
 
-		_chupai: false,
 		_lastMJ: null,
     },
 
@@ -22,7 +21,7 @@ cc.Class({
         if(cc.vv == null){
             return;
         }
-        
+
         this.initView();
         this.initEventHandler();
         
@@ -45,7 +44,11 @@ cc.Class({
                 n.active = false;
 
                 folds.push(mj);
+
+				mj.oldx = n.x;
+				mj.oldy = n.y;
             }
+
             this._folds[sideName] = folds; 
         }
         
@@ -70,49 +73,53 @@ cc.Class({
         this.node.on('game_sync',function(data){
             self.initAllFolds();
         });
-        
+/*
         this.node.on('game_chupai_notify', function(data) {
 			var sd = data.detail.seatData;
 			var pai = data.detail.pai;
+
+			var localIndex = cc.vv.gameNetMgr.getLocalIndex(sd.seatindex);
+			if (0 == localIndex) {
+				return;
+			}
+			
 			if (self._lastMJ != null) {
 				self._lastMJ.setFocus(false);
 				self._lastMJ = null;
 			}
-			
-            self.initFolds(sd, false, pai);
+
+			self.initFolds(sd, false, pai);
         });
-        
+*/        
         this.node.on('guo_notify',function(data) {
-            self.initFolds(data.detail, false, -1);
+            //self.initFolds(data.detail, false, -1);
         });
 
-		this.node.on('peng_notify',function(data){
-			if (self._chupai) {
-				self._lastMJ.node.active = false;
+		this.node.on('peng_notify', function(data) {
+			self.initAllFolds();
+			self._lastMJ = null;
+		});
+
+		this.node.on('gang_notify',function(data) {
+			var info = data.detail;
+
+			if (info.gangtype == 'diangang') {
+				self.initAllFolds();
+				self._lastMJ = null;
 			}
 		});
 
-		this.node.on('gang_notify',function(data){
-			if (self._chupai) {
-				self._lastMJ.node.active = false;
-			}
-		});
-        
         this.node.on('refresh_mj',function() {
             self.initAllFolds(true);
         });
     },
     
-    initAllFolds:function(refresh){
+    initAllFolds: function(refresh) {
         var seats = cc.vv.gameNetMgr.seats;
 		var pai = cc.vv.gameNetMgr.chupai;
 		
         for (var i in seats) {
-			if (i == cc.vv.gameNetMgr.turn && pai >= 0) {
-				this.initFolds(seats[i], refresh, pai);
-	        } else {			
-            	this.initFolds(seats[i], refresh);
-	        }
+			this.initFolds(seats[i], refresh);
         }
     },
     
@@ -125,7 +132,60 @@ cc.Class({
             return idx - 16;
         }
     },
-    
+
+	doChupai: function(seatData, pai, pos) {
+		var folds = seatData.folds;
+		var localIndex = cc.vv.gameNetMgr.getLocalIndex(seatData.seatindex);
+        var side = cc.vv.mahjongmgr.getSide(localIndex);
+        var foldsSprites = this._folds[side];
+
+		var start = folds.length;
+
+		var index = this.getRealIndex(start);
+
+		if (side == 'east') {
+			index = foldsSprites.length - index - 1;
+		}
+
+		var mj = foldsSprites[index];
+		var mjnode = mj.node;
+		var self = this;
+		var position = mjnode.parent.convertToNodeSpaceAR(pos);
+
+		if (self._lastMJ != null) {
+			self._lastMJ.setFocus(false);
+			self._lastMJ = null;
+		}
+
+		mjnode.opacity = 0;
+		mjnode.active = true;
+		mj.setMJID(pai);
+		var oldx = mj.oldx;
+		var oldy = mj.oldy;
+
+		var fnSetOpacity = cc.callFunc(function(target, data) {
+			data.opacity = 255;
+		}, this, mjnode);
+
+		var fnFinished = cc.callFunc(function(target, data) {
+			data.showFocus(true);
+			data.node.x = data.oldx;
+			data.node.y = data.oldy;
+		}, this, mj);
+
+		var actions = cc.sequence(cc.hide(),
+									cc.place(position.x, position.y),
+									cc.show(),
+									fnSetOpacity,
+									cc.moveTo(0.3, cc.p(oldx, oldy)),
+									fnFinished);
+
+		mjnode.runAction(actions);
+
+		mj.setFocus(true);
+		this._lastMJ = mj;
+    },
+
     initFolds:function(seatData, refresh, chupai) {
         var folds = seatData.folds;
         if(folds == null){
@@ -133,7 +193,6 @@ cc.Class({
         }
         var localIndex = cc.vv.gameNetMgr.getLocalIndex(seatData.seatindex);
         var side = cc.vv.mahjongmgr.getSide(localIndex);
-        
         var foldsSprites = this._folds[side];
         
         for (var i = 0; i < folds.length; ++i) {
@@ -155,7 +214,7 @@ cc.Class({
 
 			if (i == (folds.length - 1) && chupai == -1) {
 				mj.setFocus(true);
-				this._chupai = false;
+				mj.showFocus();
 				this._lastMJ = mj;
 			} else {
 				mj.setFocus(false);
@@ -180,10 +239,10 @@ cc.Class({
             mj.node.active = true;
             mj.setMJID(chupai);
 			mj.setFocus(true);
+			mj.showFocus();
 
 			start += 1;
 
-			this._chupai = true;
 			this._lastMJ = mj;
 		}
 

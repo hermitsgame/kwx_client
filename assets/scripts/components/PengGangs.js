@@ -13,6 +13,7 @@ cc.Class({
         // },
         // ...
         _templates: [],
+		_tempMJ: [],
     },
 
     // use this for initialization
@@ -27,9 +28,6 @@ cc.Class({
         var realwidth = cc.director.getVisibleSize().width;
         var scale = realwidth / 1280;
         
-        //pengangroot.scaleX *= scale;
-        //pengangroot.scaleY *= scale;
-        
         var sides = [ "south", "east", "west" ];
         for (var i = 0; i < sides.length; i++) {
             var side = gameChild.getChildByName(sides[i]);
@@ -38,21 +36,30 @@ cc.Class({
 
             this._templates.push(child);
             peng.removeChild(child);
-        }
+
+			var pg = side.getChildByName('peng');
+			var mahjongs = pg.getChildByName('mahjongs');
+			var mj = mahjongs.getChildByName('south_mj');
+
+			mahjongs.removeChild(mj);
+			this._tempMJ.push(mj);
+
+			pg.active = false;
+		}
         
         var self = this;
-        this.node.on('peng_notify',function(data){
-            //刷新所有的牌
-            //console.log(data.detail);
+        this.node.on('peng_notify',function(data) {
             var data = data.detail;
-            self.onPengGangChanged(data);
+
+            self.onPengGangChanged(data.seatData);
+			self.playPengAnimation(data);
         });
         
-        this.node.on('gang_notify',function(data){
-            //刷新所有的牌
-            //console.log(data.detail);
-            var data = data.detail;
+        this.node.on('gang_notify', function(info) {
+            var data = info.detail;
+
             self.onPengGangChanged(data.seatData);
+			self.playGangAnimation(data);
         });
         
         this.node.on('game_begin', function(data) {
@@ -79,7 +86,121 @@ cc.Class({
         this.hideSide("west");
         this.hideSide("east");
     },
-    
+
+	playPengAnimation: function(data) {
+		var seatData = data.seatData;
+		var pai = data.pai;
+		var localIndex = cc.vv.gameNetMgr.getLocalIndex(seatData.seatindex);
+        var side = cc.vv.mahjongmgr.getSide(localIndex);
+        var gameChild = this.node.getChildByName('game');
+        var myself = gameChild.getChildByName(side);
+        var pg = myself.getChildByName('peng');
+		var bg = pg.getChildByName('bg');
+		var mahjongs = pg.getChildByName('mahjongs');
+		var temp = this._tempMJ[localIndex];
+
+		var oldPos = [ -120, 0, 120 ];
+		var newPos = [ -76.5, 0, 76.5 ];
+
+		mahjongs.removeAllChildren();
+		pg.active = true;
+
+		for (var i = 0; i < 3; i++) {
+			var node = cc.instantiate(temp);
+			var mj = node.getComponent('SmartMJ');
+
+			mahjongs.addChild(node);
+
+			mj.setFunction(0);
+			mj.setMJID(pai);
+			node.x = oldPos[i];
+
+			if (oldPos[i] == newPos[i]) {
+				continue;
+			}
+
+			var action = cc.moveTo(0.2, cc.p(newPos[i], 0));
+			node.runAction(action);
+		}
+
+		bg.opacity = 0;
+		bg.scaleX = 1.2;
+		bg.active = true;
+
+		var fnFinished = cc.callFunc(function(target, data) {
+			data.active = false;
+		}, this, pg);
+
+		var act = cc.sequence(cc.hide(),
+								cc.delayTime(0.2),
+								cc.show(),
+								cc.fadeTo(0.3, 255),
+								cc.delayTime(0.4),
+								fnFinished);
+
+		bg.runAction(act);
+    },
+
+	playGangAnimation: function(data) {
+		var seatData = data.seatData;
+		var pai = data.pai;
+		var gangtype = data.gangtype;
+		var localIndex = cc.vv.gameNetMgr.getLocalIndex(seatData.seatindex);
+        var side = cc.vv.mahjongmgr.getSide(localIndex);
+        var gameChild = this.node.getChildByName('game');
+        var myself = gameChild.getChildByName(side);
+        var pg = myself.getChildByName('peng');
+		var bg = pg.getChildByName('bg');
+		var mahjongs = pg.getChildByName('mahjongs');
+		var temp = this._tempMJ[localIndex];
+
+		var oldPos = [ -190, -70, 70, 190 ];
+		var newPos = [ -114.75, -38.25, 38.25, 114.75 ];
+
+		mahjongs.removeAllChildren();
+		pg.active = true;
+
+		for (var i = 0; i < 4; i++) {
+			var node = cc.instantiate(temp);
+			var mj = node.getComponent('SmartMJ');
+
+			mahjongs.addChild(node);
+
+			if (gangtype == 'angang' && localIndex != 0) {
+				mj.setFunction(1);
+			} else {
+				mj.setFunction(0);
+				mj.setMJID(pai);
+			}
+
+			node.x = oldPos[i];
+
+			if (oldPos[i] == newPos[i]) {
+				continue;
+			}
+
+			var action = cc.moveTo(0.2, cc.p(newPos[i], 0));
+			node.runAction(action);
+		}
+
+		bg.opacity = 0;
+		bg.scaleX = 1.6;
+		bg.active = true;
+
+		var fnFinished = cc.callFunc(function(target, data) {
+			data.active = false;
+		}, this, pg);
+
+		var act = cc.sequence(cc.hide(),
+								cc.delayTime(0.2),
+								cc.show(),
+								cc.fadeTo(0.3, 255),
+								cc.delayTime(0.4),
+								fnFinished);
+
+		bg.runAction(act);
+    },
+
     getPengGangItem:function(root, side, index) {
         if (root.childrenCount > index) {
             return root.children[index];
@@ -93,18 +214,22 @@ cc.Class({
         return node;
     },
     
-    hideSide:function(side){
+    hideSide: function(side) {
         var gameChild = this.node.getChildByName("game");
         var myself = gameChild.getChildByName(side);
         var pengangroot = cc.find("layout/penggangs", myself);
+		//var holds = cc.find("layout/holds", myself);
+
         if (pengangroot) {
             pengangroot.removeAllChildren();
         }
         
         if (side == "south") {
             pengangroot.width = 0;
+			//holds.x = 0;
         } else {
             pengangroot.height = 0;
+			//holds.y = 0;
         }
     },
     
@@ -120,8 +245,6 @@ cc.Class({
 
         var localIndex = cc.vv.gameNetMgr.getLocalIndex(seatData.seatindex);
         var side = cc.vv.mahjongmgr.getSide(localIndex);
-       
-		//console.log("onPengGangChanged" + localIndex);
             
         var gameChild = this.node.getChildByName("game");
         var myself = gameChild.getChildByName(side);
@@ -131,31 +254,29 @@ cc.Class({
             pengangroot.children[i].active = false;
         }
 
-        //初始化杠牌
         var index = 0;
         
-        var gangs = seatData.angangs;
-        for (var i = 0; i < gangs.length; ++i) {
-            var mjid = gangs[i];
+        var angangs = seatData.angangs;
+        for (var i = 0; i < angangs.length; ++i) {
+            var mjid = angangs[i];
             this.initPengAndGangs(pengangroot, side, index, mjid, "angang");
             index++;
         }
 
-        var gangs = seatData.diangangs;
-        for (var i = 0; i < gangs.length; ++i) {
-            var mjid = gangs[i];
+        var diangangs = seatData.diangangs;
+        for (var i = 0; i < diangangs.length; ++i) {
+            var mjid = diangangs[i];
             this.initPengAndGangs(pengangroot, side, index, mjid, "diangang");
             index++;
         }
 
-        var gangs = seatData.wangangs;
-        for (var i = 0; i < gangs.length; ++i) {
-            var mjid = gangs[i];
+        var wangangs = seatData.wangangs;
+        for (var i = 0; i < wangangs.length; ++i) {
+            var mjid = wangangs[i];
             this.initPengAndGangs(pengangroot, side, index, mjid, "wangang");
             index++;
         }
-        
-        //初始化碰牌
+
         var pengs = seatData.pengs;
         if (pengs) {
             for (var i = 0; i < pengs.length; ++i) {
@@ -164,6 +285,19 @@ cc.Class({
                 index++;
             }
         }
+
+/*
+		var holds = cc.find("layout/holds", myself);
+		var temp = this._templates[localIndex];
+
+		if (0 == localIndex) {
+			holds.x = pengangroot.x + (temp.width + 20) * index;
+		} else if (1 == localIndex) {
+			holds.y = pengangroot.y + (temp.height + 3) * index + 5;
+		} else if (2 == localIndex) {
+			holds.y = pengangroot.y - (temp.height + 3) * index;
+		}
+*/
     },
 
     initPengAndGangs:function(pengangroot, side, index, mjid, flag) {
@@ -188,21 +322,6 @@ cc.Class({
                     continue;
                 }
 
-                if (flag == "angang") {
-                    board.spriteFrame = mgr.getBoardSpriteFrame(side, "meld_cover");
-                    tile.active = false;
-                } else {
-                    board.spriteFrame = mgr.getBoardSpriteFrame(side, "meld");
-                    
-                    var sprite = mgr.getTileSpriteFrame(side, "meld", mjid);
-                    if (!sprite) {
-                        sprite = mgr.getTileSpriteFrame(side, "table", mjid);
-                    }
-
-					tile.active = true;
-                    tileSprite.spriteFrame = sprite;
-                }
-            } else {
 				board.spriteFrame = mgr.getBoardSpriteFrame(side, "meld");
 
 				var sprite = mgr.getTileSpriteFrame(side, "meld", mjid);
@@ -212,12 +331,23 @@ cc.Class({
 
 				tile.active = true;
 				tileSprite.spriteFrame = sprite;
+            } else {
+            	if (flag == "angang") {
+                    board.spriteFrame = mgr.getBoardSpriteFrame(side, "meld_cover");
+                    tile.active = false;
+                } else {
+					board.spriteFrame = mgr.getBoardSpriteFrame(side, "meld");
+
+					var sprite = mgr.getTileSpriteFrame(side, "meld", mjid);
+					if (!sprite) {
+						sprite = mgr.getTileSpriteFrame(side, "table", mjid);
+					}
+
+					tile.active = true;
+					tileSprite.spriteFrame = sprite;
+                }
             }
         }
     },
-
-    // called every frame, uncomment this function to activate update callback
-    // update: function (dt) {
-
-    // },
 });
+

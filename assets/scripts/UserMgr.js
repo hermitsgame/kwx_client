@@ -1,3 +1,6 @@
+
+var shopURL = 'http://115.28.80.123:12580';
+
 cc.Class({
     extends: cc.Component,
     properties: {
@@ -16,7 +19,7 @@ cc.Class({
         oldRoomId:null,
     },
     
-    guestAuth:function() {
+    guestAuth: function() {
         var account = cc.args["account"];
         if(account == null){
             account = cc.sys.localStorage.getItem("account");
@@ -200,5 +203,18 @@ cc.Class({
 
 		cc.vv.wc.show(0);
         cc.vv.http.sendRequest("/get_detail_of_game", data, onGet);
-    }
+    },
+
+	getGameGoods: function(callback) {
+        var self = this;
+        var onGet = function(ret) {
+			cc.vv.wc.hide();
+			if (ret != null) {
+                callback(ret);
+            }
+        };
+
+		cc.vv.wc.show(0);
+        cc.vv.http.sendRequest("/get_game_goods", null, onGet, shopURL);
+    },
 });

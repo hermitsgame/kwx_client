@@ -75,7 +75,7 @@ cc.Class({
         this.initButtonHandler("Canvas/top_right/btn_shezhi");
         this.initButtonHandler("Canvas/bottom_right/btn_help");
         this.initButtonHandler("Canvas/bottom_right/btn_zhanji");
-        this.initButtonHandler("Canvas/bottom_right/btn_buy");
+        //this.initButtonHandler("Canvas/bottom_right/btn_buy");
 
         if(!cc.vv.userMgr.notice){
             cc.vv.userMgr.notice = {

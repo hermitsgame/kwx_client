@@ -74,13 +74,21 @@ cc.Class({
             	self.onPengGangChanged(seats[i]);
         	}
         });
-        
-        var seats = cc.vv.gameNetMgr.seats;
+
+		this.node.on('refresh_mj', function(data) {
+			self.refresh();
+		});
+
+        this.refresh();
+    },
+
+	refresh: function() {
+		var seats = cc.vv.gameNetMgr.seats;
         for (var i in seats) {
             this.onPengGangChanged(seats[i]);
         }
     },
-    
+
     onGameBein:function(){
         this.hideSide("south");
         this.hideSide("west");
@@ -218,7 +226,6 @@ cc.Class({
         var gameChild = this.node.getChildByName("game");
         var myself = gameChild.getChildByName(side);
         var pengangroot = cc.find("layout/penggangs", myself);
-		//var holds = cc.find("layout/holds", myself);
 
         if (pengangroot) {
             pengangroot.removeAllChildren();
@@ -226,10 +233,8 @@ cc.Class({
         
         if (side == "south") {
             pengangroot.width = 0;
-			//holds.x = 0;
         } else {
             pengangroot.height = 0;
-			//holds.y = 0;
         }
     },
     
@@ -285,19 +290,6 @@ cc.Class({
                 index++;
             }
         }
-
-/*
-		var holds = cc.find("layout/holds", myself);
-		var temp = this._templates[localIndex];
-
-		if (0 == localIndex) {
-			holds.x = pengangroot.x + (temp.width + 20) * index;
-		} else if (1 == localIndex) {
-			holds.y = pengangroot.y + (temp.height + 3) * index + 5;
-		} else if (2 == localIndex) {
-			holds.y = pengangroot.y - (temp.height + 3) * index;
-		}
-*/
     },
 
     initPengAndGangs:function(pengangroot, side, index, mjid, flag) {

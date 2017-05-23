@@ -516,7 +516,7 @@ cc.Class({
         return '';
 	},
 
-	makeCountMap: function(holds, kou) {
+	makeCountMap: function(holds) {
 		var countMap = {};
 	
 		for (var i = 0; i < holds.length; i++) {
@@ -527,23 +527,6 @@ cc.Class({
 			}
 
 			countMap[pai] = c + 1;
-		}
-
-		if (kou) {
-			for (var i = 0; i < kou.length; i++) {
-				var pai = kou[i];
-
-				var c = countMap[pai];
-
-				if (!c || c < 3) {
-					console.log("error: kou not found - " + pai);
-					return [];
-				} else {
-					c = c - 3;
-				}
-
-				countMap[pai] = c;
-			}
 		}
 
 		return countMap;
@@ -560,9 +543,9 @@ cc.Class({
 
 		holds.splice(idx, 1);
 
-		var countMap = this.makeCountMap(holds, kou);
+		this.initContext(sd, kou);
 
-		sd.countMap = countMap;
+		var countMap = sd.countMap;
 
 		var tingMap = this.getTingMap(sd);
 
@@ -573,7 +556,16 @@ cc.Class({
 				var pai = kou[i];
 				var c = countMap[pai];
 
-				countMap[pai] += 3;
+				if (c == null) {
+					c = 0;
+				}
+
+				c += 3;
+				countMap[pai] = c;
+
+				for (var i = 0; i < 3; i++) {
+					holds.splice(0, 0, pai);
+				}
 			}
 		}
 
@@ -673,42 +665,72 @@ cc.Class({
 		return tingMap;
 	},
 
-	getMings: function(sd, kou) {
-		var holds = sd._holds = sd.holds.slice(0);
-		var countMap = this.makeCountMap(holds, kou);
+	initContext: function(sd, kou) {
+		var holds = sd._holds;
 
-		sd.countMap = countMap;
+		if (kou) {
+			for (var i = 0; i < kou.length; i++) {
+				var pai = kou[i];
+
+				for (var j = 0; j < 3; j++) {
+					var idx = holds.indexOf(pai);
+
+					holds.splice(idx, 1);
+				}
+			}
+		}
+
+		sd.countMap = this.makeCountMap(holds);
+	},
+
+	getMings: function(sd, kou) {
+		sd._holds = sd.holds.slice(0);
+
+		this.initContext(sd, kou);
 
 		return this.getMingPai(sd);
 	},
 
+	showCountMap: function(countMap) {
+		for (var k in countMap) {
+			if (countMap[k] > 0) {
+				console.log(k + ': ' + countMap[k]);
+			}
+		}
+	},
+
 	getMingPai: function(sd) {
 		var countMap = sd.countMap;
+		var holds = sd._holds;
 		var mings = [];
 
 		for (var k in countMap) {
-			var c = countMap[k];
-			if (0 == c) {
+			var pai = parseInt(k);
+			var cnt = countMap[k];
+			if (0 == cnt) {
 				continue;
 			}
 
 			countMap[k]--;
 
+			var idx = holds.indexOf(pai);
+			
+			holds.splice(idx, 1);
+
 			var tingMap = this.getTingMap(sd);
 			var tings = [];
 			for (var i in tingMap) {
-				var c = parseInt(i);
-				tings.push(c);
+				tings.push(parseInt(i));
 			}
-			
+
 			if (tings && tings.length > 0) {
-				var pai = parseInt(k);
 				if (cc.vv.gameNetMgr.checkCanChuPai(pai)) {
     				mings.push(pai);
 				}
 			}
 
-			countMap[k] = c;
+			holds.splice(idx, 0, pai);
+			countMap[k] = cnt;
 		}
 
 		return mings;
@@ -716,11 +738,14 @@ cc.Class({
 
 	checkKouPai: function(sd, kou) {
 		var canKou = [];
-		var countMap = {};
 		var holds = sd._holds = sd.holds.slice(0);
-		var countMap = this.makeCountMap(holds, kou);
+
+		this.initContext(sd, kou);
+
+		var countMap = sd.countMap;
 
 		for (var k in countMap) {
+			var pai = parseInt(k);
 			var old = countMap[k];
 			var c = old;
 			if (old >= 3) {
@@ -730,12 +755,19 @@ cc.Class({
 			}
 
 			countMap[k] = c;
-			sd.countMap = countMap;
+
+			for (var i = 0; i < 3; i++) {
+				var idx = holds.indexOf(pai);
+				holds.splice(idx, 1);
+			}
 
 			var mings = this.getMingPai(sd);
 			if (mings && mings.length > 0) {
-				var pai = parseInt(k);
 				canKou.push(pai);
+			}
+
+			for (var i = 0; i < 3; i++) {
+				holds.splice(0, 0, pai);
 			}
 
 			countMap[k] = old;
@@ -778,7 +810,6 @@ cc.Class({
 			return false;
 		}
 
-		//分开匹配 A-2,A-1,A
 		var matched = true;
 		var v = selected % 9;
 		if (v < 2) {
@@ -794,7 +825,6 @@ cc.Class({
 			}
 		}
 
-		//匹配成功，扣除相应数值
 		if (matched) {
 			countMap[selected - 2] --;
 			countMap[selected - 1] --;
@@ -808,7 +838,6 @@ cc.Class({
 			}
 		}
 
-		//分开匹配 A-1,A,A + 1
 		matched = true;
 		if (v < 1 || v > 7) {
 			matched = false;
@@ -823,7 +852,6 @@ cc.Class({
 			}
 		}
 
-		//匹配成功，扣除相应数值
 		if (matched) {
 			countMap[selected - 1] --;
 			countMap[selected] --;
@@ -837,8 +865,6 @@ cc.Class({
 			}
 		}
 
-
-		//分开匹配 A,A+1,A + 2
 		matched = true;
 		if (v > 6) {
 			matched = false;
@@ -853,7 +879,6 @@ cc.Class({
 			}
 		}
 
-		//匹配成功，扣除相应数值
 		if (matched) {
 			countMap[selected] --;
 			countMap[selected + 1] --;
@@ -882,16 +907,13 @@ cc.Class({
 			}
 		}
 
-		//如果没有找到剩余牌，则表示匹配成功了
 		if (selected == -1) {
 			return true;
 		}
 
-		//否则，进行匹配
 		if (c == 3) {
 			countMap[selected] = 0;
 			var ret = this.checkSingle(holds, countMap);
-			//立即恢复对数据的修改
 			countMap[selected] = c;
 			if (ret) {
 				return true;
@@ -899,15 +921,12 @@ cc.Class({
 		} else if (c == 4) {
 			countMap[selected] = 1;
 			var ret = this.checkSingle(holds, countMap);
-			//立即恢复对数据的修改
 			countMap[selected] = c;
-			//如果作为一坎能够把牌匹配完，直接返回TRUE。
 			if (ret) {
 				return true;
 			}
 		}
 
-		//按单牌处理
 		return this.matchSingle(holds, countMap, selected);
 	},
 

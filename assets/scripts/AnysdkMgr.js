@@ -25,10 +25,10 @@ cc.Class({
     // },
 
     init:function() {
-        this.ANDROID_API = "com/vivigames/scmj/WXAPI";
+		this.ANDROID_API = 'com/' + cc.vv.company + '/' + cc.vv.appname + '/WXAPI';
         this.IOS_API = "AppController";
     },
-    
+	
     login:function(){
         if (cc.sys.os == cc.sys.OS_ANDROID) {
 			//cc.eventManager.removeCustomListeners(cc.game.EVENT_HIDE);

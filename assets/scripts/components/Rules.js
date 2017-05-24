@@ -78,6 +78,8 @@ cc.Class({
     
     onBtnBackClicked:function() {
 		cc.vv.audioMgr.playButtonClicked();
+		cc.vv.wc.hide();
+
 		cc.vv.utils.showFrame(this.node, 'head', 'body', false);
     },
     

@@ -29,7 +29,6 @@ cc.Class({
 
         var emptyTip = cc.find('body/emptyTip', historyRoom);
         this._emptyTip = emptyTip;
-        emptyTip.active = false;
 
         var viewlist = cc.find('body/roomlist', historyRoom);
         var content = cc.find("view/content", viewlist);
@@ -77,6 +76,7 @@ cc.Class({
 
     onBtnBackClicked: function() {
         cc.vv.audioMgr.playButtonClicked();
+		cc.vv.wc.hide();
 
         if (this._curRoomInfo == null) {
             this._historyData = null;
@@ -101,9 +101,14 @@ cc.Class({
         var self = this;
 
         cc.vv.userMgr.getHistoryList(function(data) {
+			if (!data) {
+				return;
+			}
+
             data.sort(function(a,b) {
                 return a.time < b.time; 
             });
+
             self._historyData = data;
             for(var i = 0; i < data.length; ++i){
                 var numOfSeats = data[i].seats.length;

@@ -816,7 +816,7 @@ cc.Class({
 
 			setTimeout(function() {
 				chupai.active = false;
-			}, 500);
+			}, 800);
         }
     },
     
@@ -1615,7 +1615,8 @@ cc.Class({
 		var swap = (side == 'east');
 		var myself = (0 == localIndex);
 
-		var mopaiNode = sideHolds.children[mjcnt - 1];
+		var moid = swap ? 0 : mjcnt - 1;
+		var mopaiNode = sideHolds.children[moid];
 		var mopai = mopaiNode.getComponent('SmartMJ');
 		var mopaiId = mopai.mjid;
 		var folds = this.node.getComponent('Folds');
@@ -1626,11 +1627,7 @@ cc.Class({
 			var pos = mopaiNode.parent.convertToWorldSpaceAR(mopaiNode.position);
 
 			folds.doChupai(seatData, pai, pos);
-
 			this.putMJItem(sideHolds, localIndex, mopaiNode);
-
-			console.log('doChupai 1');
-
 			return;
 		}
 
@@ -1638,21 +1635,18 @@ cc.Class({
 
 		if (myself) {
 			mjnode = this._lastChupai;
+			this._lastChupai = null;
 		}
-
-		this._lastChupai = null;
-
-		mopaiNode.oldID = mjcnt - 1;
 
 		if (mjnode == null && mopaiId == pai) {
 			mjnode = mopaiNode;
 		}
 
-		for (var i = 0; i < mjcnt - 1; i++) {
+		for (var i = 0; i < mjcnt; i++) {
 			var node = sideHolds.children[i];
 			var mj = node.getComponent('SmartMJ');
 
-			node.oldID = swap ? (mjcnt - 2 - i) : i;
+			node.oldID = swap ? (mjcnt - 1 - i) : i;
 
 			if (mjnode == null && mj.mjid == pai) {
 				mjnode = node;
@@ -1666,20 +1660,18 @@ cc.Class({
 		var pos = sideHolds.convertToWorldSpaceAR(mjnode.position);
 
 		this.putMJItem(sideHolds, localIndex, mjnode);
-
 		folds.doChupai(seatData, pai, pos);
 
-		var holds = [];
-		var insert = mopaiNode != mjnode;
-
-		if (!insert) {
+		if (mopaiNode == mjnode) {
 			return;
 		}
+
+		var holds = [];
 
 		mjcnt = sideHolds.childrenCount;
 
 		for (var i = 0; i < mjcnt - 1; i++) {
-			var node = sideHolds.children[swap ? (mjcnt - 2 - i) : i];
+			var node = sideHolds.children[swap ? (mjcnt - 1 - i) : i];
 
 			holds.push(node);
 		}
@@ -1750,10 +1742,11 @@ cc.Class({
 		var seatData = cc.vv.gameNetMgr.seats[seatIndex];
 		var showBoard = (pai >= 0) && (seatData.hasmingpai || cc.vv.replayMgr.isReplay());
 		var pgs = this.getPengGangsNum(seatData);
-		var index = 13 - pgs;
+		var pos = 13 - pgs;
+		var index = swap ? 0 : pos;
 
 		if (pai == null) {
-			if (mjcnt <= index) {
+			if (mjcnt <= pos) {
 				return;
 			}
 
@@ -1763,10 +1756,11 @@ cc.Class({
 			return;
 		}
 
-		var mjnode = this.getMJItem(sideHolds, localIndex, index);
+		
+		var mjnode = this.getMJItem(sideHolds, localIndex, pos);
 		var mj = mjnode.getComponent('SmartMJ');
 
-		this.setMJLocation(mjnode, localIndex, index, showBoard, true);
+		this.setMJLocation(mjnode, localIndex, pos, showBoard, true);
 
 		mjnode.active = true;
 		mj.setFunction(showBoard ? 1 : 0);
@@ -1774,6 +1768,19 @@ cc.Class({
 		if (showBoard || myself) {
 			mj.setMJID(pai);
 			mj.setKou(false);
+		}
+
+		if (swap) {
+			var holds = [];
+
+			for (var i = 0; i < sideHolds.childrenCount; i++) {
+				holds.push(sideHolds.children[i]);
+			}
+
+			for (var i = 0; i < holds.length; i++) {
+				var child = holds[i];
+				child.setSiblingIndex(i == holds.length - 1 ? 0 : i + 1);
+			}
 		}
 	},
 
@@ -1850,6 +1857,7 @@ cc.Class({
         var sideRoot = game.getChildByName(side);
         var sideHolds = cc.find("layout/holds", sideRoot);
         var holds = this.sortHolds(seatData);
+		var swap = 'east' == side;
 
         if (holds != null && holds.length > 0) {
             var kou = seatData.kou;
@@ -1869,16 +1877,11 @@ cc.Class({
 				this.putMJItem(sideHolds, localIndex, mjnode);
 			}
 
-			if (mjcnt % 3 == 2) {
-				mopai = _holds.pop();
-				mjcnt--;
-			}
-
             for (var i = 0; i < kou.length; i++) {
                 var pai = kou[i];
                 
                 for (var j = 0; j < 3; j++) {
-                    var idx = (side == 'east') ? (mjcnt - 1 - index) : index;
+                    var idx = swap ? (mjcnt - 1 - index) : index;
 					
                     var mjnode = this.getMJItem(sideHolds, localIndex, idx);
                     var mj = mjnode.getComponent("SmartMJ");
@@ -1906,7 +1909,7 @@ cc.Class({
 
 			var total = _holds.length;
             for (var i = 0; i < total; i++) {
-                var idx = (side == 'east') ? (mjcnt - 1 - index) : index;
+                var idx = swap ? (mjcnt - 1 - index) : index;
                 var mjnode = this.getMJItem(sideHolds, localIndex, idx);
                 var mj = mjnode.getComponent("SmartMJ");
 
@@ -1923,32 +1926,17 @@ cc.Class({
 
                 index++;
             }
-
-			if (mopai) {
-
-				var idx = index;
-				var mjnode = this.getMJItem(sideHolds, localIndex, idx);
-				var mj = mjnode.getComponent("SmartMJ");
-
-				this.setMJLocation(mjnode, localIndex, index, true, true);
-
-				mjnode.active = true;
-
-                if (reset) {
-                    mj.reset();
-                }
-
-                mj.setFunction(1);
-                mj.setMJID(mopai);
-
-                index++;
-			}
         } else {
 			var penggangs = this.getPengGangsNum(seatData);
 			var mjnum = 13 - penggangs;
 
 			if (hasMopai) {
 				mjnum += 1;
+			}
+
+			for (var i = 0; i < mjnum; i++) {
+				var mjnode = this.getMJItem(sideHolds, localIndex, i);
+				mjnode.active = true;
 			}
 
 			while (sideHolds.childrenCount > mjnum) {
@@ -1958,7 +1946,7 @@ cc.Class({
 			}
 
             for (var i = 0; i < mjnum; i++) {
-                var idx = i;
+                var idx = swap ? (mjnum - 1 - i) : i;
                 var mjnode = this.getMJItem(sideHolds, localIndex, idx);
                 var mj = mjnode.getComponent("SmartMJ");
 

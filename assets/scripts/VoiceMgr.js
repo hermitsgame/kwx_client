@@ -112,12 +112,12 @@ cc.Class({
         jsb.fileUtils.writeDataToFile(decode(content),url);
         */
         
-        if(cc.sys.isNative){
+        if (cc.sys.isNative) {
             this._voiceMediaPath = jsb.fileUtils.getWritablePath() + "/voicemsgs/";
             this.setStorageDir(this._voiceMediaPath);
         }
     },
-    
+	
     prepare:function(filename){
         if(!cc.sys.isNative){
             return;
@@ -125,7 +125,7 @@ cc.Class({
         cc.vv.audioMgr.pauseAll();
         this.clearCache(filename);
         if(cc.sys.os == cc.sys.OS_ANDROID){
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoiceRecorder", "prepare", "(Ljava/lang/String;)V",filename);
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoiceRecorder', "prepare", "(Ljava/lang/String;)V",filename);
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "prepareRecord:",filename);
@@ -138,7 +138,7 @@ cc.Class({
         }
         cc.vv.audioMgr.resumeAll();
         if(cc.sys.os == cc.sys.OS_ANDROID){
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoiceRecorder", "release", "()V");
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoiceRecorder', "release", "()V");
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "finishRecord");
@@ -151,7 +151,7 @@ cc.Class({
         }
         cc.vv.audioMgr.resumeAll();
         if(cc.sys.os == cc.sys.OS_ANDROID){
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoiceRecorder", "cancel", "()V");
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoiceRecorder', "cancel", "()V");
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "cancelRecord");
@@ -191,7 +191,7 @@ cc.Class({
         }
         cc.vv.audioMgr.pauseAll();
         if(cc.sys.os == cc.sys.OS_ANDROID){
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoicePlayer", "play", "(Ljava/lang/String;)V",filename); 
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoicePlayer', "play", "(Ljava/lang/String;)V",filename); 
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "play:",filename);
@@ -206,7 +206,7 @@ cc.Class({
         }
         cc.vv.audioMgr.resumeAll();
         if(cc.sys.os == cc.sys.OS_ANDROID){
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoicePlayer", "stop", "()V"); 
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoicePlayer', "stop", "()V"); 
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "stopPlay");
@@ -218,7 +218,7 @@ cc.Class({
     getVoiceLevel:function(maxLevel){
         return Math.floor(Math.random() * maxLevel + 1);
         if(cc.sys.os == cc.sys.OS_ANDROID){ 
-            return jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoiceRecorder", "getVoiceLevel", "(I)I",maxLevel);
+            return jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoiceRecorder', "getVoiceLevel", "(I)I",maxLevel);
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
         }
@@ -253,7 +253,7 @@ cc.Class({
             return;
         }
         if(cc.sys.os == cc.sys.OS_ANDROID){ 
-            jsb.reflection.callStaticMethod("com/vivigames/voicesdk/VoiceRecorder", "setStorageDir", "(Ljava/lang/String;)V",dir);    
+            jsb.reflection.callStaticMethod('com/' + cc.vv.company + '/voicesdk/VoiceRecorder', "setStorageDir", "(Ljava/lang/String;)V",dir);    
         }
         else if(cc.sys.os == cc.sys.OS_IOS){
             jsb.reflection.callStaticMethod("VoiceSDK", "setStorageDir:",dir);
@@ -263,3 +263,4 @@ cc.Class({
         }
     }
 });
+

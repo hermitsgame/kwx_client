@@ -69,7 +69,12 @@ cc.Class({
         chooseSpeaker.active = false;
 
 		var btnLogout = cc.find('body/btnLogout', this.node);
-		cc.vv.utils.addClickEvent(btnLogout, this.node, "AudioSet", "onLogoutClicked");
+
+		if (cc.director.getScene() == 'hall') {
+			cc.vv.utils.addClickEvent(btnLogout, this.node, "AudioSet", "onLogoutClicked");
+		} else {
+			btnLogout.active = false;
+		}
 
 		var btnClose = cc.find('body/btnClose', this.node);
 		cc.vv.utils.addClickEvent(btnClose, this.node, "AudioSet", "onCloseClicked");

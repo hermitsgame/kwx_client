@@ -178,6 +178,7 @@ cc.Class({
         var speaker = ['Man1', 'Man2', 'Woman1', 'Woman2'];
 
         path = path.format(dialect[this.dialectID], speaker[this.speakerID], id);
+		console.log('play: ' + path);
         this.playSFX(path);
     },
 

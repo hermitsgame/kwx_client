@@ -57,8 +57,12 @@ cc.Class({
         }
     },
     
-    initMgr:function(){
+    initMgr: function() {
         cc.vv = {};
+
+		cc.vv.company = 'vivigames';
+		cc.vv.appname = 'scmj';
+		
         var UserMgr = require("UserMgr");
         cc.vv.userMgr = new UserMgr();
         

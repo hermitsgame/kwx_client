@@ -231,7 +231,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 587,
-      "height": 193
+      "height": 192
     },
     "_children": [],
     "_rotationX": 0,
@@ -374,7 +374,7 @@
       "__id__": 7
     },
     "_enabled": true,
-    "transition": 0,
+    "transition": 3,
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 92,

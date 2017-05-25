@@ -70,7 +70,7 @@ cc.Class({
 
 		var btnLogout = cc.find('body/btnLogout', this.node);
 
-		if (cc.director.getScene() == 'hall') {
+		if (cc.director.getScene().name == 'hall') {
 			cc.vv.utils.addClickEvent(btnLogout, this.node, "AudioSet", "onLogoutClicked");
 		} else {
 			btnLogout.active = false;

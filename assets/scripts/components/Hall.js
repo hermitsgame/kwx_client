@@ -41,7 +41,7 @@ cc.Class({
 		cc.vv.audioMgr.playButtonClicked();
 
 		setTimeout(function() {
-			cc.vv.anysdkMgr.share("全民卡五星","全民卡五星，包含了襄阳卡五星、随州卡五星等多种湖北流行卡五星麻将玩法。", timeLine);
+			cc.vv.anysdkMgr.share("梦幻卡五星","梦幻卡五星，包含了襄阳卡五星、随州卡五星等多种湖北流行卡五星麻将玩法。", timeLine);
 		}, 100);
     },
 

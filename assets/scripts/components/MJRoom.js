@@ -126,12 +126,15 @@ cc.Class({
             var idx = cc.vv.gameNetMgr.getSeatIndexByID(data.sender);
             var localIdx = cc.vv.gameNetMgr.getLocalIndex(idx);
             
-            var index = data.content;
+            var index = parseInt(data.content);
+			
             var info = cc.vv.chat.getQuickChatInfo(index);
             self._seats[localIdx].chat(info.content);
-            
-            //cc.vv.audioMgr.playSFX(info.sound);
-			cc.vv.audioMgr.playQuyu(index + 1);
+
+			index += 1;
+			console.log(index);
+
+			cc.vv.audioMgr.playQuyu(index);
         });
         
         this.node.on('emoji_push',function(data) {
@@ -179,7 +182,7 @@ cc.Class({
     },
     
     onBtnWeichatClicked:function(){
-        var title = "<全民卡五星>";
+        var title = "<梦幻卡五星>";
         cc.vv.anysdkMgr.share(title, "房号:" + cc.vv.gameNetMgr.roomId + " 玩法:" + cc.vv.gameNetMgr.getWanfa());
     },
     

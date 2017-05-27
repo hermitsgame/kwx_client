@@ -10,8 +10,8 @@
 	{ "name": "flag", "parent": "chest", "length": 38.88, "x": -35.56, "y": -10.67, "rotation": 155.08, "inheritScale": false },
 	{ "name": "head", "parent": "chest", "length": 108.58, "x": 84.81, "y": -5.3, "rotation": -52.62, "inheritScale": false },
 	{ "name": "earring", "parent": "head", "length": 36.98, "x": 24.57, "y": 23.91, "rotation": -160.48 },
-	{ "name": "eyes_close", "parent": "head", "length": 39.01, "x": 58.62, "y": 9.83, "scaleX": 0, "scaleY": 0, "rotation": -82.37 },
-	{ "name": "eyes_half", "parent": "head", "length": 44.33, "x": 57.8, "y": 10.42, "scaleX": 0, "scaleY": 0, "rotation": -79.29 },
+	{ "name": "eyes_close", "parent": "head", "length": 39.01, "x": 58.62, "y": 9.83, "rotation": -82.37 },
+	{ "name": "eyes_half", "parent": "head", "length": 44.33, "x": 57.8, "y": 10.42, "rotation": -79.29 },
 	{ "name": "forearm", "parent": "arm", "length": 129.42, "x": 140.52, "y": -2.05, "rotation": 99.38 },
 	{ "name": "left2", "parent": "head", "length": 60.57, "x": 82.22, "y": 29.72, "rotation": -165.43 },
 	{ "name": "left_hair", "parent": "head", "length": 102.15, "x": 116.86, "y": 14.11, "rotation": 147.47 },
@@ -30,18 +30,16 @@
 	{ "name": "dongnvf001", "bone": "head", "attachment": "dongnvf001" },
 	{ "name": "dongnvf002", "bone": "head", "attachment": "dongnvf002" },
 	{ "name": "dongnv017", "bone": "left_hair", "attachment": "dongnv017" },
-	{ "name": "dongnv007", "bone": "root", "attachment": "dongnv007" },
 	{ "name": "dongnv012", "bone": "head", "attachment": "dongnv012" },
 	{ "name": "dongnv014", "bone": "head", "attachment": "dongnv014" },
 	{ "name": "dongnv015", "bone": "bone2", "attachment": "dongnv015" },
 	{ "name": "dongnv134", "bone": "forearm", "attachment": "dongnv134" },
 	{ "name": "dongnv016", "bone": "rhair", "attachment": "dongnv016" },
-	{ "name": "dongnv128", "bone": "root", "attachment": "dongnv128" },
+	{ "name": "dongnv128", "bone": "hip", "attachment": "dongnv128" },
 	{ "name": "dongnv127", "bone": "fan", "attachment": "dongnv127" },
 	{ "name": "dongnv124", "bone": "chest", "attachment": "dongnv124" },
-	{ "name": "dongnvp102", "bone": "root" },
 	{ "name": "dongnvf006", "bone": "head", "attachment": "dongnvf006" },
-	{ "name": "dongnvf005", "bone": "root", "attachment": "dongnvf005" },
+	{ "name": "dongnvf005", "bone": "head", "attachment": "dongnvf005" },
 	{ "name": "dongnv119", "bone": "arm", "attachment": "dongnv119" },
 	{ "name": "dongnvp201", "bone": "band", "attachment": "dongnvp201" },
 	{ "name": "dongnv122", "bone": "waist", "attachment": "dongnv122" },
@@ -60,10 +58,9 @@
 	{ "name": "dongnv101", "bone": "left_hair", "attachment": "dongnv101" },
 	{ "name": "dongnv001", "bone": "left_hair", "attachment": "dongnv001" },
 	{ "name": "dongnv000", "bone": "left_hair", "attachment": "dongnv000" },
-	{ "name": "dongnv126", "bone": "root", "attachment": "dongnv126" },
-	{ "name": "dongnvp106", "bone": "root" },
+	{ "name": "dongnv126", "bone": "hip", "attachment": "dongnv126" },
 	{ "name": "dongnv125", "bone": "skirt", "attachment": "dongnv125" },
-	{ "name": "dongnv123", "bone": "root", "attachment": "dongnv123" },
+	{ "name": "dongnv123", "bone": "hip", "attachment": "dongnv123" },
 	{ "name": "dongnvp200", "bone": "bone3", "attachment": "dongnvp200" },
 	{ "name": "dongnv146", "bone": "forearm", "attachment": "dongnv146" },
 	{ "name": "dongnv135", "bone": "zhuizi", "attachment": "dongnv135" },
@@ -72,15 +69,7 @@
 	{ "name": "dongnv130", "bone": "fan", "attachment": "dongnv130" },
 	{ "name": "dongnv142", "bone": "fan", "attachment": "dongnv142" },
 	{ "name": "dongnv145", "bone": "hand", "attachment": "dongnv145" },
-	{ "name": "dongnvf003", "bone": "root" },
-	{ "name": "dongnvf004", "bone": "root" },
-	{ "name": "dongnvp001", "bone": "root" },
-	{ "name": "dongnvp104", "bone": "root" },
-	{ "name": "dongnvp103", "bone": "root" },
 	{ "name": "dongnvp105", "bone": "forearm", "attachment": "dongnvp105" },
-	{ "name": "dongnvp107", "bone": "root" },
-	{ "name": "dongnvp109", "bone": "root" },
-	{ "name": "dongnvp108", "bone": "root" },
 	{ "name": "dongnvxx000", "bone": "ring", "attachment": "dongnvxx000" }
 ],
 "skins": {
@@ -105,9 +94,6 @@
 		},
 		"dongnv006": {
 			"dongnv006": { "x": 23.55, "y": -2.16, "rotation": 134.55, "width": 45, "height": 38 }
-		},
-		"dongnv007": {
-			"dongnv007": { "x": -302.37, "y": 117.99, "width": 22, "height": 48 }
 		},
 		"dongnv008": {
 			"dongnv008": { "x": 43.58, "y": 7.57, "rotation": 144.81, "width": 97, "height": 62 }
@@ -155,7 +141,7 @@
 			"dongnv122": { "x": 69.97, "y": 5.63, "rotation": -90.45, "width": 141, "height": 178 }
 		},
 		"dongnv123": {
-			"dongnv123": { "x": -231.68, "y": -90.71, "width": 197, "height": 148 }
+			"dongnv123": { "x": -18.3, "y": -28.67, "width": 197, "height": 148 }
 		},
 		"dongnv124": {
 			"dongnv124": { "x": 47.33, "y": 55.42, "rotation": -120.34, "width": 70, "height": 101 }
@@ -164,13 +150,13 @@
 			"dongnv125": { "x": 68.35, "y": -17.27, "rotation": 90.13, "width": 206, "height": 110 }
 		},
 		"dongnv126": {
-			"dongnv126": { "x": -223.22, "y": -209.53, "width": 151, "height": 169 }
+			"dongnv126": { "x": -9.84, "y": -147.49, "width": 151, "height": 169 }
 		},
 		"dongnv127": {
 			"dongnv127": { "x": 85.88, "y": -11.57, "rotation": -59.8, "width": 83, "height": 102 }
 		},
 		"dongnv128": {
-			"dongnv128": { "x": -186.38, "y": 63.44, "width": 79, "height": 151 }
+			"dongnv128": { "x": 26.98, "y": 125.47, "width": 79, "height": 151 }
 		},
 		"dongnv130": {
 			"dongnv130": { "x": 77.23, "y": -5.56, "rotation": -89.58, "width": 121, "height": 196 }
@@ -202,44 +188,14 @@
 		"dongnvf002": {
 			"dongnvf002": { "x": -83.44, "y": 28.12, "rotation": -67.71, "width": 71, "height": 174 }
 		},
-		"dongnvf003": {
-			"dongnvf003": { "x": 79.01, "y": 103.1, "width": 75, "height": 159 }
-		},
-		"dongnvf004": {
-			"dongnvf004": { "x": 184.38, "y": 43.18, "width": 69, "height": 167 }
-		},
 		"dongnvf005": {
-			"dongnvf005": { "x": -314.51, "y": 62.07, "width": 92, "height": 197 }
+			"dongnvf005": { "x": -110.87, "y": 19.36, "rotation": -67.71, "width": 92, "height": 197 }
 		},
 		"dongnvf006": {
 			"dongnvf006": { "x": -134.28, "y": 36.83, "rotation": -67.71, "width": 88, "height": 175 }
 		},
-		"dongnvp001": {
-			"dongnvp001": { "x": -385.53, "y": -137.64, "width": 38, "height": 26 }
-		},
-		"dongnvp102": {
-			"dongnvp102": { "x": -127.77, "y": -18.06, "width": 74, "height": 102 }
-		},
-		"dongnvp103": {
-			"dongnvp103": { "x": -82.4, "y": -43.51, "width": 125, "height": 51 }
-		},
-		"dongnvp104": {
-			"dongnvp104": { "x": -30.83, "y": -61.38, "width": 31, "height": 32 }
-		},
 		"dongnvp105": {
 			"dongnvp105": { "x": 8.08, "y": -10.47, "rotation": -1.79, "width": 54, "height": 86 }
-		},
-		"dongnvp106": {
-			"dongnvp106": { "x": -321.6, "y": -59.22, "width": 38, "height": 55 }
-		},
-		"dongnvp107": {
-			"dongnvp107": { "x": -370.66, "y": -76.34, "width": 112, "height": 50 }
-		},
-		"dongnvp108": {
-			"dongnvp108": { "x": -441.17, "y": -82.65, "width": 117, "height": 66 }
-		},
-		"dongnvp109": {
-			"dongnvp109": { "x": -451.3, "y": -102.2, "width": 93, "height": 77 }
 		},
 		"dongnvp200": {
 			"dongnvp200": { "x": 121.42, "y": -2.91, "rotation": 130.61, "width": 187, "height": 183 }
@@ -252,7 +208,6 @@
 		}
 	}
 },
-"events": {},
 "animations": {
 	"fan": {
 		"bones": {
@@ -380,16 +335,18 @@
 			},
 			"eyes_half": {
 				"scale": [
-					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
-					{ "time": 1.2, "x": 2, "y": 2, "curve": "stepped" },
-					{ "time": 1.2666, "x": 1, "y": 1 }
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0666, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.4666, "x": 0, "y": 0 }
 				]
 			},
 			"eyes_close": {
 				"scale": [
-					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
-					{ "time": 1.2666, "x": 2, "y": 2, "curve": "stepped" },
-					{ "time": 1.3333, "x": 1, "y": 1 }
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.2, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
 				]
 			},
 			"rhair": {

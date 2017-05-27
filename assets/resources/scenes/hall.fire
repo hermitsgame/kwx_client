@@ -1872,7 +1872,7 @@
     "_rotationX": 0,
     "_rotationY": 0,
     "_scaleX": 1.1,
-    "_scaleY": 1.1,
+    "_scaleY": 1.11,
     "_position": {
       "__type__": "cc.Vec2",
       "x": 400,
@@ -1906,7 +1906,7 @@
     "defaultSkin": "",
     "defaultAnimation": "fan",
     "loop": true,
-    "_premultipliedAlpha": false,
+    "_premultipliedAlpha": true,
     "_N$skeletonData": {
       "__uuid__": "21193fcc-a95e-46aa-9e68-e8d53515b3a1"
     },

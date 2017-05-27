@@ -1423,7 +1423,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "b0fa53Eo9JK4K+e1Oo+dgWq",
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 36
@@ -1860,23 +1860,23 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 0.5,
+      "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 598,
-      "height": 578
+      "width": 0,
+      "height": 0
     },
     "_children": [],
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 1.1,
+    "_scaleY": 1.1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
+      "x": 400,
+      "y": -100
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1884,7 +1884,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_id": "64173vnw9BMcZKsrSnYQsnE",
+    "_id": "26dffX4cdJI66A3HRJfQCx8",
     "_active": true,
     "_components": [
       {
@@ -1895,30 +1895,24 @@
     "groupIndex": 0
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "sp.Skeleton",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 46
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "169a33c6-df38-46d2-b1e6-f4b6a36c97e7"
+    "_paused": false,
+    "defaultSkin": "",
+    "defaultAnimation": "fan",
+    "loop": true,
+    "_premultipliedAlpha": false,
+    "_N$skeletonData": {
+      "__uuid__": "21193fcc-a95e-46aa-9e68-e8d53515b3a1"
     },
-    "_type": 0,
-    "_sizeMode": 1,
-    "_fillType": 0,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_atlas": null
+    "_N$timeScale": 1,
+    "_N$debugSlots": false,
+    "_N$debugBones": false
   },
   {
     "__type__": "cc.Node",
@@ -2407,7 +2401,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "42af8gp2CBO442dFSiDietD",
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 59

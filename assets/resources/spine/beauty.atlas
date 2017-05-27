@@ -1,0 +1,390 @@
+
+beauty.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+dongnv000
+  rotate: true
+  xy: 826, 749
+  size: 27, 26
+  orig: 27, 26
+  offset: 0, 0
+  index: -1
+dongnv001
+  rotate: true
+  xy: 191, 392
+  size: 60, 45
+  orig: 60, 45
+  offset: 0, 0
+  index: -1
+dongnv002
+  rotate: true
+  xy: 585, 672
+  size: 13, 40
+  orig: 13, 40
+  offset: 0, 0
+  index: -1
+dongnv003
+  rotate: false
+  xy: 585, 687
+  size: 56, 13
+  orig: 56, 13
+  offset: 0, 0
+  index: -1
+dongnv004
+  rotate: false
+  xy: 788, 778
+  size: 59, 28
+  orig: 63, 28
+  offset: 0, 0
+  index: -1
+dongnv005
+  rotate: false
+  xy: 588, 702
+  size: 59, 22
+  orig: 59, 22
+  offset: 0, 0
+  index: -1
+dongnv006
+  rotate: false
+  xy: 538, 665
+  size: 45, 38
+  orig: 45, 38
+  offset: 0, 0
+  index: -1
+dongnv007
+  rotate: false
+  xy: 181, 309
+  size: 22, 48
+  orig: 22, 48
+  offset: 0, 0
+  index: -1
+dongnv008
+  rotate: true
+  xy: 369, 554
+  size: 97, 62
+  orig: 97, 62
+  offset: 0, 0
+  index: -1
+dongnv009
+  rotate: false
+  xy: 936, 802
+  size: 82, 52
+  orig: 82, 52
+  offset: 0, 0
+  index: -1
+dongnv010
+  rotate: true
+  xy: 976, 954
+  size: 68, 45
+  orig: 68, 45
+  offset: 0, 0
+  index: -1
+dongnv011
+  rotate: true
+  xy: 191, 841
+  size: 31, 62
+  orig: 31, 63
+  offset: 0, 1
+  index: -1
+dongnv012
+  rotate: false
+  xy: 246, 564
+  size: 121, 87
+  orig: 122, 87
+  offset: 0, 0
+  index: -1
+dongnv013
+  rotate: true
+  xy: 88, 359
+  size: 87, 101
+  orig: 87, 101
+  offset: 0, 0
+  index: -1
+dongnv013_1
+  rotate: true
+  xy: 191, 359
+  size: 31, 37
+  orig: 31, 37
+  offset: 0, 0
+  index: -1
+dongnv014
+  rotate: true
+  xy: 266, 481
+  size: 13, 37
+  orig: 13, 37
+  offset: 0, 0
+  index: -1
+dongnv015
+  rotate: false
+  xy: 501, 556
+  size: 51, 95
+  orig: 51, 95
+  offset: 0, 0
+  index: -1
+dongnv016
+  rotate: false
+  xy: 433, 566
+  size: 66, 85
+  orig: 66, 85
+  offset: 0, 0
+  index: -1
+dongnv017
+  rotate: true
+  xy: 365, 491
+  size: 61, 71
+  orig: 61, 72
+  offset: 0, 1
+  index: -1
+dongnv101
+  rotate: false
+  xy: 438, 499
+  size: 56, 65
+  orig: 56, 65
+  offset: 0, 0
+  index: -1
+dongnv119
+  rotate: false
+  xy: 588, 726
+  size: 76, 173
+  orig: 76, 173
+  offset: 0, 0
+  index: -1
+dongnv121
+  rotate: true
+  xy: 258, 704
+  size: 168, 165
+  orig: 168, 165
+  offset: 0, 0
+  index: -1
+dongnv122
+  rotate: true
+  xy: 390, 881
+  size: 141, 178
+  orig: 141, 178
+  offset: 0, 0
+  index: -1
+dongnv123
+  rotate: false
+  xy: 191, 874
+  size: 197, 148
+  orig: 197, 148
+  offset: 0, 0
+  index: -1
+dongnv124
+  rotate: false
+  xy: 864, 809
+  size: 70, 101
+  orig: 70, 101
+  offset: 0, 0
+  index: -1
+dongnv125
+  rotate: false
+  xy: 768, 912
+  size: 206, 110
+  orig: 206, 110
+  offset: 0, 0
+  index: -1
+dongnv126
+  rotate: true
+  xy: 2, 2
+  size: 151, 169
+  orig: 151, 169
+  offset: 0, 0
+  index: -1
+dongnv127
+  rotate: false
+  xy: 96, 255
+  size: 83, 102
+  orig: 83, 102
+  offset: 0, 0
+  index: -1
+dongnv128
+  rotate: false
+  xy: 165, 503
+  size: 79, 151
+  orig: 79, 151
+  offset: 0, 0
+  index: -1
+dongnv130
+  rotate: true
+  xy: 570, 901
+  size: 121, 196
+  orig: 121, 196
+  offset: 0, 0
+  index: -1
+dongnv134
+  rotate: true
+  xy: 2, 609
+  size: 228, 124
+  orig: 228, 124
+  offset: 0, 0
+  index: -1
+dongnv135
+  rotate: false
+  xy: 181, 268
+  size: 15, 39
+  orig: 15, 39
+  offset: 0, 0
+  index: -1
+dongnv136
+  rotate: false
+  xy: 128, 610
+  size: 27, 44
+  orig: 27, 44
+  offset: 0, 0
+  index: -1
+dongnv142
+  rotate: true
+  xy: 976, 912
+  size: 40, 32
+  orig: 47, 70
+  offset: 3, 19
+  index: -1
+dongnv143
+  rotate: true
+  xy: 165, 454
+  size: 47, 70
+  orig: 47, 70
+  offset: 0, 0
+  index: -1
+dongnv145
+  rotate: false
+  xy: 496, 500
+  size: 66, 54
+  orig: 66, 54
+  offset: 0, 0
+  index: -1
+dongnv146
+  rotate: false
+  xy: 258, 653
+  size: 164, 49
+  orig: 164, 49
+  offset: 0, 0
+  index: -1
+dongnvf001
+  rotate: false
+  xy: 128, 656
+  size: 128, 181
+  orig: 128, 181
+  offset: 0, 0
+  index: -1
+dongnvf002
+  rotate: false
+  xy: 515, 705
+  size: 71, 174
+  orig: 71, 174
+  offset: 0, 0
+  index: -1
+dongnvf003
+  rotate: false
+  xy: 88, 448
+  size: 75, 159
+  orig: 75, 159
+  offset: 0, 0
+  index: -1
+dongnvf004
+  rotate: false
+  xy: 666, 732
+  size: 69, 167
+  orig: 69, 167
+  offset: 0, 0
+  index: -1
+dongnvf005
+  rotate: false
+  xy: 2, 155
+  size: 92, 197
+  orig: 92, 197
+  offset: 0, 0
+  index: -1
+dongnvf006
+  rotate: false
+  xy: 425, 704
+  size: 88, 175
+  orig: 88, 175
+  offset: 0, 0
+  index: -1
+dongnvp001
+  rotate: true
+  xy: 205, 319
+  size: 38, 26
+  orig: 38, 26
+  offset: 0, 0
+  index: -1
+dongnvp102
+  rotate: false
+  xy: 788, 808
+  size: 74, 102
+  orig: 74, 102
+  offset: 0, 0
+  index: -1
+dongnvp103
+  rotate: true
+  xy: 737, 774
+  size: 125, 49
+  orig: 125, 51
+  offset: 0, 1
+  index: -1
+dongnvp104
+  rotate: false
+  xy: 794, 744
+  size: 30, 32
+  orig: 31, 32
+  offset: 0, 0
+  index: -1
+dongnvp105
+  rotate: true
+  xy: 936, 856
+  size: 54, 86
+  orig: 54, 86
+  offset: 0, 0
+  index: -1
+dongnvp106
+  rotate: true
+  xy: 737, 734
+  size: 38, 55
+  orig: 38, 55
+  offset: 0, 0
+  index: -1
+dongnvp107
+  rotate: false
+  xy: 424, 653
+  size: 112, 49
+  orig: 112, 50
+  offset: 0, 1
+  index: -1
+dongnvp108
+  rotate: false
+  xy: 246, 496
+  size: 117, 66
+  orig: 117, 66
+  offset: 0, 0
+  index: -1
+dongnvp109
+  rotate: true
+  xy: 96, 160
+  size: 93, 77
+  orig: 93, 77
+  offset: 0, 0
+  index: -1
+dongnvp200
+  rotate: false
+  xy: 2, 839
+  size: 187, 183
+  orig: 187, 183
+  offset: 0, 0
+  index: -1
+dongnvp201
+  rotate: false
+  xy: 2, 354
+  size: 84, 253
+  orig: 84, 253
+  offset: 0, 0
+  index: -1
+dongnvxx000
+  rotate: false
+  xy: 237, 468
+  size: 27, 26
+  orig: 29, 29
+  offset: 1, 2
+  index: -1

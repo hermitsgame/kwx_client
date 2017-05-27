@@ -109,8 +109,8 @@ cc.Class({
         }
 
 		var people = cc.find('Canvas/bottom_left/people');
-		people.x = -598;
-		people.runAction(cc.moveTo(0.5, cc.p(0, 0)));
+		people.x = -120;
+		people.runAction(cc.moveTo(0.5, cc.p(400, -100)));
 
 		var btnCreate = cc.find('Canvas/btnCreateRoom');
 		btnCreate.x += 600;

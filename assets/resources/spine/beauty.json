@@ -1,0 +1,421 @@
+{
+"bones": [
+	{ "name": "root", "x": 139.35, "y": 320.18, "rotation": -0.15 },
+	{ "name": "hip", "parent": "root", "x": -213.37, "y": -62.03 },
+	{ "name": "band", "parent": "hip", "length": 248.49, "x": 52.56, "y": 109.69, "rotation": -76.7 },
+	{ "name": "chest", "parent": "hip", "length": 88.49, "x": -2.9, "y": 143.45, "rotation": 120.34, "inheritScale": false },
+	{ "name": "skirt", "parent": "hip", "length": 102.68, "x": -0.93, "y": 1.14, "rotation": -90.13 },
+	{ "name": "waist", "parent": "hip", "length": 145.57, "x": -1.63, "y": 1.5, "rotation": 90.45 },
+	{ "name": "arm", "parent": "chest", "length": 138.55, "x": 88.12, "y": 59.5, "rotation": 142.06, "inheritScale": false },
+	{ "name": "flag", "parent": "chest", "length": 38.88, "x": -35.56, "y": -10.67, "rotation": 155.08, "inheritScale": false },
+	{ "name": "head", "parent": "chest", "length": 108.58, "x": 84.81, "y": -5.3, "rotation": -52.62, "inheritScale": false },
+	{ "name": "earring", "parent": "head", "length": 36.98, "x": 24.57, "y": 23.91, "rotation": -160.48 },
+	{ "name": "eyes_close", "parent": "head", "length": 39.01, "x": 58.62, "y": 9.83, "scaleX": 0, "scaleY": 0, "rotation": -82.37 },
+	{ "name": "eyes_half", "parent": "head", "length": 44.33, "x": 57.8, "y": 10.42, "scaleX": 0, "scaleY": 0, "rotation": -79.29 },
+	{ "name": "forearm", "parent": "arm", "length": 129.42, "x": 140.52, "y": -2.05, "rotation": 99.38 },
+	{ "name": "left2", "parent": "head", "length": 60.57, "x": 82.22, "y": 29.72, "rotation": -165.43 },
+	{ "name": "left_hair", "parent": "head", "length": 102.15, "x": 116.86, "y": 14.11, "rotation": 147.47 },
+	{ "name": "mouse", "parent": "head", "length": 30.87, "x": 28.18, "y": -13.1, "rotation": -169.29 },
+	{ "name": "rhair", "parent": "head", "length": 84.64, "x": 114.47, "y": -34.31, "rotation": 180 },
+	{ "name": "bone1", "parent": "left_hair", "length": 55.64, "x": 72.49, "y": -1.26, "rotation": 256.91, "inheritRotation": false },
+	{ "name": "bone2", "parent": "rhair", "length": 85.08, "x": 1.21, "y": -22.75, "rotation": 16.42 },
+	{ "name": "bone3", "parent": "forearm", "length": 225.93, "x": 25.52, "y": -12.24, "rotation": 229.23, "inheritRotation": false },
+	{ "name": "hand", "parent": "forearm", "length": 53.42, "x": 131.12, "y": -1.12, "rotation": 1.8 },
+	{ "name": "left1", "parent": "left_hair", "length": 45.51, "x": -4.97, "y": 16.4, "rotation": 10.26 },
+	{ "name": "ring", "parent": "forearm", "length": 37.03, "x": 119.41, "y": -27.17, "rotation": 95.89 },
+	{ "name": "fan", "parent": "hand", "length": 172.37, "x": 22.08, "y": -25.84, "rotation": 56.2 },
+	{ "name": "zhuizi", "parent": "fan", "length": 32.79, "x": -23.96, "y": -2.03, "rotation": -159.14 }
+],
+"slots": [
+	{ "name": "dongnvf001", "bone": "head", "attachment": "dongnvf001" },
+	{ "name": "dongnvf002", "bone": "head", "attachment": "dongnvf002" },
+	{ "name": "dongnv017", "bone": "left_hair", "attachment": "dongnv017" },
+	{ "name": "dongnv007", "bone": "root", "attachment": "dongnv007" },
+	{ "name": "dongnv012", "bone": "head", "attachment": "dongnv012" },
+	{ "name": "dongnv014", "bone": "head", "attachment": "dongnv014" },
+	{ "name": "dongnv015", "bone": "bone2", "attachment": "dongnv015" },
+	{ "name": "dongnv134", "bone": "forearm", "attachment": "dongnv134" },
+	{ "name": "dongnv016", "bone": "rhair", "attachment": "dongnv016" },
+	{ "name": "dongnv128", "bone": "root", "attachment": "dongnv128" },
+	{ "name": "dongnv127", "bone": "fan", "attachment": "dongnv127" },
+	{ "name": "dongnv124", "bone": "chest", "attachment": "dongnv124" },
+	{ "name": "dongnvp102", "bone": "root" },
+	{ "name": "dongnvf006", "bone": "head", "attachment": "dongnvf006" },
+	{ "name": "dongnvf005", "bone": "root", "attachment": "dongnvf005" },
+	{ "name": "dongnv119", "bone": "arm", "attachment": "dongnv119" },
+	{ "name": "dongnvp201", "bone": "band", "attachment": "dongnvp201" },
+	{ "name": "dongnv122", "bone": "waist", "attachment": "dongnv122" },
+	{ "name": "dongnv121", "bone": "chest", "attachment": "dongnv121" },
+	{ "name": "dongnv013", "bone": "head", "attachment": "dongnv013" },
+	{ "name": "dongnv013_1", "bone": "mouse", "attachment": "dongnv013_1" },
+	{ "name": "dongnv004", "bone": "eyes_close", "attachment": "dongnv004" },
+	{ "name": "dongnv005", "bone": "eyes_half", "attachment": "dongnv005" },
+	{ "name": "dongnv003", "bone": "head", "attachment": "dongnv003" },
+	{ "name": "dongnv010", "bone": "left_hair", "attachment": "dongnv010" },
+	{ "name": "dongnv011", "bone": "left2", "attachment": "dongnv011" },
+	{ "name": "dongnv002", "bone": "earring", "attachment": "dongnv002" },
+	{ "name": "dongnv008", "bone": "left_hair", "attachment": "dongnv008" },
+	{ "name": "dongnv006", "bone": "left1", "attachment": "dongnv006" },
+	{ "name": "dongnv009", "bone": "left_hair", "attachment": "dongnv009" },
+	{ "name": "dongnv101", "bone": "left_hair", "attachment": "dongnv101" },
+	{ "name": "dongnv001", "bone": "left_hair", "attachment": "dongnv001" },
+	{ "name": "dongnv000", "bone": "left_hair", "attachment": "dongnv000" },
+	{ "name": "dongnv126", "bone": "root", "attachment": "dongnv126" },
+	{ "name": "dongnvp106", "bone": "root" },
+	{ "name": "dongnv125", "bone": "skirt", "attachment": "dongnv125" },
+	{ "name": "dongnv123", "bone": "root", "attachment": "dongnv123" },
+	{ "name": "dongnvp200", "bone": "bone3", "attachment": "dongnvp200" },
+	{ "name": "dongnv146", "bone": "forearm", "attachment": "dongnv146" },
+	{ "name": "dongnv135", "bone": "zhuizi", "attachment": "dongnv135" },
+	{ "name": "dongnv136", "bone": "flag", "attachment": "dongnv136" },
+	{ "name": "dongnv143", "bone": "fan", "attachment": "dongnv143" },
+	{ "name": "dongnv130", "bone": "fan", "attachment": "dongnv130" },
+	{ "name": "dongnv142", "bone": "fan", "attachment": "dongnv142" },
+	{ "name": "dongnv145", "bone": "hand", "attachment": "dongnv145" },
+	{ "name": "dongnvf003", "bone": "root" },
+	{ "name": "dongnvf004", "bone": "root" },
+	{ "name": "dongnvp001", "bone": "root" },
+	{ "name": "dongnvp104", "bone": "root" },
+	{ "name": "dongnvp103", "bone": "root" },
+	{ "name": "dongnvp105", "bone": "forearm", "attachment": "dongnvp105" },
+	{ "name": "dongnvp107", "bone": "root" },
+	{ "name": "dongnvp109", "bone": "root" },
+	{ "name": "dongnvp108", "bone": "root" },
+	{ "name": "dongnvxx000", "bone": "ring", "attachment": "dongnvxx000" }
+],
+"skins": {
+	"default": {
+		"dongnv000": {
+			"dongnv000": { "x": 85.87, "y": 13.43, "rotation": 144.81, "width": 27, "height": 26 }
+		},
+		"dongnv001": {
+			"dongnv001": { "x": 79.55, "y": -3.6, "rotation": 144.81, "width": 60, "height": 45 }
+		},
+		"dongnv002": {
+			"dongnv002": { "x": 19.02, "y": -0.11, "rotation": 92.77, "width": 13, "height": 40 }
+		},
+		"dongnv003": {
+			"dongnv003": { "x": 74.44, "y": -4.68, "rotation": -67.71, "width": 56, "height": 13 }
+		},
+		"dongnv004": {
+			"dongnv004": { "x": 17.9, "y": 1.31, "rotation": 14.66, "width": 63, "height": 28 }
+		},
+		"dongnv005": {
+			"dongnv005": { "x": 17.47, "y": 1.51, "rotation": 12.44, "width": 59, "height": 22 }
+		},
+		"dongnv006": {
+			"dongnv006": { "x": 23.55, "y": -2.16, "rotation": 134.55, "width": 45, "height": 38 }
+		},
+		"dongnv007": {
+			"dongnv007": { "x": -302.37, "y": 117.99, "width": 22, "height": 48 }
+		},
+		"dongnv008": {
+			"dongnv008": { "x": 43.58, "y": 7.57, "rotation": 144.81, "width": 97, "height": 62 }
+		},
+		"dongnv009": {
+			"dongnv009": { "x": 32.43, "y": -5.39, "rotation": 144.81, "width": 82, "height": 52 }
+		},
+		"dongnv010": {
+			"dongnv010": { "x": 30.11, "y": 12.09, "rotation": 144.81, "width": 68, "height": 45 }
+		},
+		"dongnv011": {
+			"dongnv011": { "x": 35.37, "y": -2.15, "rotation": 97.72, "width": 31, "height": 63 }
+		},
+		"dongnv012": {
+			"dongnv012": { "x": 94.63, "y": 22, "rotation": -67.71, "width": 122, "height": 87 }
+		},
+		"dongnv013": {
+			"dongnv013": { "x": 53.98, "y": 1.51, "rotation": -67.71, "width": 87, "height": 101 }
+		},
+		"dongnv013_1": {
+			"dongnv013_1": { "x": 2.03, "y": -2.4, "rotation": 101.58, "width": 31, "height": 37 }
+		},
+		"dongnv014": {
+			"dongnv014": { "x": 19.38, "y": -30.33, "rotation": -67.71, "width": 13, "height": 37 }
+		},
+		"dongnv015": {
+			"dongnv015": { "x": 50.65, "y": -1.61, "rotation": 98.66, "width": 51, "height": 95 }
+		},
+		"dongnv016": {
+			"dongnv016": { "x": 46.73, "y": -9.24, "rotation": 108.47, "width": 66, "height": 85 }
+		},
+		"dongnv017": {
+			"dongnv017": { "x": 87.65, "y": 24.11, "rotation": 144.81, "width": 61, "height": 72 }
+		},
+		"dongnv101": {
+			"dongnv101": { "x": 82.31, "y": -1.39, "rotation": 144.81, "width": 56, "height": 65 }
+		},
+		"dongnv119": {
+			"dongnv119": { "x": 72.2, "y": 7.56, "rotation": 97.59, "width": 76, "height": 173 }
+		},
+		"dongnv121": {
+			"dongnv121": { "x": 32.45, "y": -3.45, "rotation": -120.34, "width": 168, "height": 165 }
+		},
+		"dongnv122": {
+			"dongnv122": { "x": 69.97, "y": 5.63, "rotation": -90.45, "width": 141, "height": 178 }
+		},
+		"dongnv123": {
+			"dongnv123": { "x": -231.68, "y": -90.71, "width": 197, "height": 148 }
+		},
+		"dongnv124": {
+			"dongnv124": { "x": 47.33, "y": 55.42, "rotation": -120.34, "width": 70, "height": 101 }
+		},
+		"dongnv125": {
+			"dongnv125": { "x": 68.35, "y": -17.27, "rotation": 90.13, "width": 206, "height": 110 }
+		},
+		"dongnv126": {
+			"dongnv126": { "x": -223.22, "y": -209.53, "width": 151, "height": 169 }
+		},
+		"dongnv127": {
+			"dongnv127": { "x": 85.88, "y": -11.57, "rotation": -59.8, "width": 83, "height": 102 }
+		},
+		"dongnv128": {
+			"dongnv128": { "x": -186.38, "y": 63.44, "width": 79, "height": 151 }
+		},
+		"dongnv130": {
+			"dongnv130": { "x": 77.23, "y": -5.56, "rotation": -89.58, "width": 121, "height": 196 }
+		},
+		"dongnv134": {
+			"dongnv134": { "x": 90.76, "y": -53.02, "rotation": -1.79, "width": 228, "height": 124 }
+		},
+		"dongnv135": {
+			"dongnv135": { "x": 14.08, "y": -2.14, "rotation": 99.34, "width": 15, "height": 39 }
+		},
+		"dongnv136": {
+			"dongnv136": { "x": 21.9, "y": 1.54, "rotation": 84.57, "width": 27, "height": 44 }
+		},
+		"dongnv142": {
+			"dongnv142": { "x": 174.13, "y": -2.96, "rotation": -59.8, "width": 47, "height": 70 }
+		},
+		"dongnv143": {
+			"dongnv143": { "x": 161.43, "y": -5.59, "rotation": -59.8, "width": 47, "height": 70 }
+		},
+		"dongnv145": {
+			"dongnv145": { "x": 25.75, "y": -1.96, "rotation": -3.59, "width": 66, "height": 54 }
+		},
+		"dongnv146": {
+			"dongnv146": { "x": 62.89, "y": -7.41, "rotation": -1.79, "width": 164, "height": 49 }
+		},
+		"dongnvf001": {
+			"dongnvf001": { "x": -83.64, "y": 3.46, "rotation": -67.71, "width": 128, "height": 181 }
+		},
+		"dongnvf002": {
+			"dongnvf002": { "x": -83.44, "y": 28.12, "rotation": -67.71, "width": 71, "height": 174 }
+		},
+		"dongnvf003": {
+			"dongnvf003": { "x": 79.01, "y": 103.1, "width": 75, "height": 159 }
+		},
+		"dongnvf004": {
+			"dongnvf004": { "x": 184.38, "y": 43.18, "width": 69, "height": 167 }
+		},
+		"dongnvf005": {
+			"dongnvf005": { "x": -314.51, "y": 62.07, "width": 92, "height": 197 }
+		},
+		"dongnvf006": {
+			"dongnvf006": { "x": -134.28, "y": 36.83, "rotation": -67.71, "width": 88, "height": 175 }
+		},
+		"dongnvp001": {
+			"dongnvp001": { "x": -385.53, "y": -137.64, "width": 38, "height": 26 }
+		},
+		"dongnvp102": {
+			"dongnvp102": { "x": -127.77, "y": -18.06, "width": 74, "height": 102 }
+		},
+		"dongnvp103": {
+			"dongnvp103": { "x": -82.4, "y": -43.51, "width": 125, "height": 51 }
+		},
+		"dongnvp104": {
+			"dongnvp104": { "x": -30.83, "y": -61.38, "width": 31, "height": 32 }
+		},
+		"dongnvp105": {
+			"dongnvp105": { "x": 8.08, "y": -10.47, "rotation": -1.79, "width": 54, "height": 86 }
+		},
+		"dongnvp106": {
+			"dongnvp106": { "x": -321.6, "y": -59.22, "width": 38, "height": 55 }
+		},
+		"dongnvp107": {
+			"dongnvp107": { "x": -370.66, "y": -76.34, "width": 112, "height": 50 }
+		},
+		"dongnvp108": {
+			"dongnvp108": { "x": -441.17, "y": -82.65, "width": 117, "height": 66 }
+		},
+		"dongnvp109": {
+			"dongnvp109": { "x": -451.3, "y": -102.2, "width": 93, "height": 77 }
+		},
+		"dongnvp200": {
+			"dongnvp200": { "x": 121.42, "y": -2.91, "rotation": 130.61, "width": 187, "height": 183 }
+		},
+		"dongnvp201": {
+			"dongnvp201": { "x": 142, "y": 2.48, "rotation": 76.7, "width": 84, "height": 253 }
+		},
+		"dongnvxx000": {
+			"dongnvxx000": { "x": 1.99, "y": 1.87, "rotation": -97.68, "width": 29, "height": 29 }
+		}
+	}
+},
+"events": {},
+"animations": {
+	"fan": {
+		"bones": {
+			"hand": {
+				"rotate": [
+					{ "time": 0, "angle": 0.44 },
+					{ "time": 1.3333, "angle": 8.5 },
+					{ "time": 2.6666, "angle": 0.44 }
+				]
+			},
+			"forearm": {
+				"rotate": [
+					{ "time": 0, "angle": -0.77 },
+					{ "time": 1.3333, "angle": -3.11 },
+					{ "time": 2.6666, "angle": -0.77 }
+				]
+			},
+			"fan": {
+				"scale": [
+					{ "time": 0, "x": 0.96, "y": 1 },
+					{ "time": 1.3333, "x": 1, "y": 1 },
+					{ "time": 2.6666, "x": 0.96, "y": 1 }
+				]
+			},
+			"chest": {
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 },
+					{ "time": 1.3333, "x": 1.02, "y": 1.02 },
+					{ "time": 2.6666, "x": 1, "y": 1 }
+				]
+			},
+			"flag": {
+				"rotate": [
+					{ "time": 0, "angle": -0.08 },
+					{ "time": 1.3333, "angle": -6.76 },
+					{ "time": 2.6666, "angle": -0.08 }
+				]
+			},
+			"zhuizi": {
+				"rotate": [
+					{ "time": 0, "angle": 379.99 },
+					{ "time": 0.6666, "angle": 24.58 },
+					{ "time": 1.3333, "angle": 0.55 },
+					{ "time": 2, "angle": -12.92 },
+					{ "time": 2.6666, "angle": 379.99 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.3333, "angle": 361.62 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"left_hair": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.3333, "angle": 1.52 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"left1": {
+				"rotate": [
+					{ "time": 1, "angle": 0 },
+					{ "time": 1.6666, "angle": 2.73 },
+					{ "time": 2.3333, "angle": 0 }
+				]
+			},
+			"left2": {
+				"rotate": [
+					{ "time": 0, "angle": 360 },
+					{ "time": 1.3333, "angle": -3.41 },
+					{ "time": 2.6666, "angle": 360 }
+				]
+			},
+			"bone2": {
+				"rotate": [
+					{ "time": 0, "angle": -2.54 },
+					{ "time": 2, "angle": 354.8 },
+					{ "time": 2.6666, "angle": -2.54 }
+				]
+			},
+			"bone3": {
+				"rotate": [
+					{ "time": 0, "angle": -363.27 },
+					{ "time": 1.3333, "angle": -357.58 },
+					{ "time": 2.6666, "angle": -3.27 }
+				]
+			},
+			"band": {
+				"rotate": [
+					{ "time": 0, "angle": 359.99 },
+					{ "time": 1.3333, "angle": 2.02 },
+					{ "time": 2.6666, "angle": 359.99 }
+				]
+			},
+			"earring": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6666, "angle": -2.71 },
+					{ "time": 1.3333, "angle": 359.48 },
+					{ "time": 2, "angle": 5.08 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"skirt": {
+				"rotate": [
+					{ "time": 0, "angle": 359.13 },
+					{ "time": 0.3333, "angle": 360.13 },
+					{ "time": 0.6666, "angle": 359.13 },
+					{ "time": 1, "angle": 358.13 },
+					{ "time": 1.3333, "angle": 359.13 },
+					{ "time": 1.6666, "angle": 360.13 },
+					{ "time": 2, "angle": 359.13 },
+					{ "time": 2.3333, "angle": 358.13 },
+					{ "time": 2.6666, "angle": 359.13 }
+				]
+			},
+			"mouse": {
+				"scale": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 2.6666, "x": 0, "y": 0 }
+				]
+			},
+			"eyes_half": {
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 1.2666, "x": 1, "y": 1 }
+				]
+			},
+			"eyes_close": {
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2666, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 1.3333, "x": 1, "y": 1 }
+				]
+			},
+			"rhair": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.3333, "angle": -2.25 },
+					{ "time": 2.6666, "angle": 0 }
+				]
+			},
+			"ring": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1, "angle": 0 },
+					{ "time": 1.3333, "angle": -173.84 },
+					{ "time": 1.8, "angle": 186.15 },
+					{ "time": 2.6666, "angle": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 },
+					{ "time": 1.3333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.6, "x": 1, "y": 1 },
+					{ "time": 1.8, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

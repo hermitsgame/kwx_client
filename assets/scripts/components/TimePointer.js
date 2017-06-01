@@ -27,7 +27,11 @@ cc.Class({
         this.node.on('game_begin',function(data){
             self.initPointer();
         });
-        
+
+		this.node.on('game_sync',function(data){
+            self.initPointer();
+        });
+		
         this.node.on('game_chupai',function(data){
             self.initPointer();
 //            self._time = 10;

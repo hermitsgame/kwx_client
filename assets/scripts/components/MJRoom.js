@@ -52,7 +52,18 @@ cc.Class({
             cc.vv.utils.addClickEvent(btnInvite, this.node, "MJRoom", "onBtnWeichatClicked");
         }
     },
-    
+
+	start: function() {
+		var isIdle = cc.vv.gameNetMgr.numOfGames == 0;
+		var dp = cc.vv.gameNetMgr.needDingPiao();
+
+		if (isIdle && !dp) {
+			cc.vv.net.send('ready');
+		} else if (!isIdle) {
+			cc.vv.net.send('ready');
+		}
+    },
+	
     refreshBtns:function(){
         var prepare = this.node.getChildByName("prepare");
         var isIdle = cc.vv.gameNetMgr.numOfGames == 0;
@@ -78,11 +89,16 @@ cc.Class({
             self.initSingleSeat(data.detail);
         });
         
-        this.node.on('game_begin',function(data){
+        this.node.on('game_begin',function(data) {
             self.refreshBtns();
             self.initSeats();
         });
-        
+
+		this.node.on('game_sync',function(data) {
+            self.refreshBtns();
+            self.initSeats();
+        });
+		
         this.node.on('game_num',function(data){
             self.refreshBtns();
         });
@@ -157,14 +173,15 @@ cc.Class({
         var index = cc.vv.gameNetMgr.getLocalIndex(seat.seatindex);
         var isOffline = !seat.online;
         var isZhuang = (seat.seatindex == cc.vv.gameNetMgr.button);
+		var ready = seat.ready;
         
-        this._seats[index].setInfo(seat.name,seat.score);
-        this._seats[index].setReady(seat.ready);
+        this._seats[index].setInfo(seat.name, seat.score);
         this._seats[index].setOffline(isOffline);
         this._seats[index].setID(seat.userid);
         this._seats[index].voiceMsg(false);
         this._seats[index].setZhuang(isZhuang);
         this._seats[index].setPiao(seat.dingpiao);
+		this._seats[index].setReady(ready);
     },
     
     onBtnSettingsClicked:function(){

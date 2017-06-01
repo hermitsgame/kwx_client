@@ -69,6 +69,7 @@ cc.Class({
         this.addComponent("PopupMgr");
         this.addComponent("ReConnect");
         this.addComponent("Voice");
+		this.addComponent('Dice');
 
         this.initView();
         this.initEventHandlers();
@@ -80,7 +81,7 @@ cc.Class({
 
 		cc.vv.audioMgr.playBackGround();
     },
-    
+
     initView: function() {
         var gameChild = this.node.getChildByName("game");
 
@@ -294,31 +295,39 @@ cc.Class({
            self.initMahjongs();
            self.checkChuPai(true);
         });
-        
-        this.node.on('game_begin', function(data) {
-            self.onGameBegin();
+
+		this.node.on('game_holds_update', function(data) {
+			self.updateHolds();
+        });
+
+		this.node.on('game_holds_len', function(data) {
+			self.updateOtherHolds(data.detail);
+        });
+
+		this.node.on('game_holds_updated', function(data) {
+			self.holdsUpdated();
         });
         
-        this.node.on('game_sync', function(data) {
+        this.node.on('game_begin', function(data) {
+			cc.vv.audioMgr.playSFX('SoundCommon/GAME_START0.mp3');
             self.onGameBegin();
+        });
+
+        this.node.on('game_sync', function(data) {
+            self.onGameSync();
         });
         
         this.node.on('game_chupai', function(data) {
-            data = data.detail;
             self.hideChupai();
-/*
-            if (data.last != cc.vv.gameNetMgr.seatIndex) {
-                self.showMopai(data.last, null);
-            }
-*/
         });
         
         this.node.on('game_mopai',function(data) {
-            self.hideChupai();
-            data = data.detail;
-			self.showMopai(data.seatIndex, data.pai);
+            var detail = data.detail;
 
-			var localIndex = cc.vv.gameNetMgr.getLocalIndex(data.seatIndex);
+			self.hideChupai();
+			self.showMopai(detail.seatIndex, detail.pai);
+
+			var localIndex = cc.vv.gameNetMgr.getLocalIndex(detail.seatIndex);
 			if (0 == localIndex) {
 				self.checkChuPai(true);
 			}
@@ -366,7 +375,7 @@ cc.Class({
         });
         
         this.node.on('mj_count',function(data) {
-            self._mjcount.string = cc.vv.gameNetMgr.numOfMJ;;
+            self._mjcount.string = cc.vv.gameNetMgr.numOfMJ;
         });
         
         this.node.on('game_num',function(data){
@@ -921,7 +930,7 @@ cc.Class({
         var huPrompt = this._huPrompts[localIndex];
         huPrompt.active = false;
     },
-    
+	
     playEfx:function(index, name, cb) {
         var anim = this._playEfxs[index];
         anim.node.active = true;
@@ -942,10 +951,50 @@ cc.Class({
 //			fn();
 //		}
     },
-    
+
+	onGameSync: function() {
+		console.log('onGameSync');
+
+		this.gameRoot.active = true;
+        this.prepareRoot.active = false;
+
+		this._mjcount.string = cc.vv.gameNetMgr.numOfMJ;
+		this._gamecount.string = "" + cc.vv.gameNetMgr.numOfGames + " / " + cc.vv.gameNetMgr.maxNumOfGames;
+
+		this.initMahjongs(true);
+        var seats = cc.vv.gameNetMgr.seats;
+        for (var i in seats) {
+            var seatData = seats[i];
+			var show = seatData.hasmingpai || cc.vv.replayMgr.isReplay();
+            var localIndex = cc.vv.gameNetMgr.getLocalIndex(i);
+            if (localIndex != 0) {
+                this.initOtherMahjongs(seatData);
+                if (i == cc.vv.gameNetMgr.turn) {
+					var mopai = show ? seatData.holds[seatData.holds.length - 1] : -1;
+                    this.showMopai(i, mopai);
+                }
+                else {
+                    this.showMopai(i, null);
+                }
+            }
+        }
+
+        this.showChupai();
+        if(cc.vv.gameNetMgr.curaction != null){
+            this.showAction(cc.vv.gameNetMgr.curaction);
+            cc.vv.gameNetMgr.curaction = null;
+        }
+
+		if (cc.vv.gameNetMgr.seatIndex == cc.vv.gameNetMgr.turn) {
+			this.checkChuPai(true);
+		}
+	},
+
     onGameBegin:function() {
         this._acting = 0;
         this._gameover = null;
+
+		console.log('onGameBegin');
 
         for (var i = 0; i < this._playEfxs.length; ++i) {
             this._playEfxs[i].node.active = false;
@@ -997,8 +1046,9 @@ cc.Class({
             return;
         }
 
-        this.gameRoot.active = true;
+		this.gameRoot.active = true;
         this.prepareRoot.active = false;
+/*
         this.initMahjongs(true);
         var seats = cc.vv.gameNetMgr.seats;
         for (var i in seats) {
@@ -1026,6 +1076,7 @@ cc.Class({
 		if (cc.vv.gameNetMgr.seatIndex == cc.vv.gameNetMgr.turn) {
 			this.checkChuPai(true);
 		}
+*/
     },
 
 	onMJClicked: function(event) {
@@ -1623,6 +1674,8 @@ cc.Class({
 
 		var show = (myself || seatData.hasmingpai || seatData.hued || cc.vv.replayMgr.isReplay());
 
+		cc.vv.audioMgr.playSFX('SoundCommon/OUT_CARD0.mp3');
+
 		if (!show) {
 			var pos = mopaiNode.parent.convertToWorldSpaceAR(mopaiNode.position);
 
@@ -1756,6 +1809,7 @@ cc.Class({
 			return;
 		}
 
+		cc.vv.audioMgr.playSFX('SoundCommon/SEND_CARD0.mp3');
 		
 		var mjnode = this.getMJItem(sideHolds, localIndex, pos);
 		var mj = mjnode.getComponent('SmartMJ');
@@ -1781,6 +1835,111 @@ cc.Class({
 				var child = holds[i];
 				child.setSiblingIndex(i == holds.length - 1 ? 0 : i + 1);
 			}
+		}
+	},
+
+	updateHolds: function() {
+		var seats = cc.vv.gameNetMgr.seats;
+        var seatData = seats[cc.vv.gameNetMgr.seatIndex];
+        var holds = seatData.holds;
+        if (holds == null) {
+            return;
+        }
+
+		console.log('updateHolds');
+
+		cc.vv.audioMgr.playSFX('SoundCommon/SEND_CARD0.mp3');
+
+		var _holds = holds.slice(0);
+
+        var show = (seatData.hasmingpai || seatData.hued || cc.vv.replayMgr.isReplay());
+        var sideHolds = cc.find("game/south/layout/holds", this.node);
+		var total = _holds.length;
+
+		while (sideHolds.childrenCount > total) {
+			var mjnode = sideHolds.children[total];
+
+			this.putMJItem(sideHolds, 0, mjnode);
+		}
+
+        for (var i = 0; i < total; ++i) {
+            var mjid = _holds[i];
+			var mjnode = this.getMJItem(sideHolds, 0, i);
+			var mj = mjnode.getComponent('SmartMJ');
+
+			this.setMJLocation(mjnode, 0, i, show, (i == 13));
+
+			mj.reset();
+
+            mjnode.y = 0;
+            mjnode.active = true;
+
+            var toSet = show ? 1 : 0;
+
+            mj.setFunction(toSet);
+            mj.setMJID(mjid);
+        }
+
+		console.log('updateHolds end');
+	},
+
+	holdsUpdated: function() {
+		var sideHolds = cc.find("game/south/layout/holds", this.node);
+		var total = sideHolds.childrenCount;
+		var self = this;
+
+		cc.vv.audioMgr.playSFX('SoundCommon/SEND_CARD0.mp3');
+
+        for (var i = 0; i < total; i++) {
+            var mjnode = sideHolds.children[i];
+			var mj = mjnode.getComponent('SmartMJ');
+
+            mj.setFunction(2);
+        }
+
+		setTimeout(function() {
+			cc.vv.audioMgr.playSFX('SoundCommon/SEND_CARD0.mp3');
+			self.initMahjongs(true);
+		}, 500);
+	},
+
+	updateOtherHolds: function(seatData) {
+		var localIndex = this.getLocalIndex(seatData.seatindex);
+        if (localIndex == 0) {
+            return;
+        }
+
+        var side = cc.vv.mahjongmgr.getSide(localIndex);
+        var game = this.node.getChildByName("game");
+        var sideRoot = game.getChildByName(side);
+        var sideHolds = cc.find("layout/holds", sideRoot);
+		var swap = 'east' == side;
+
+		var mjnum = seatData.holdsLen;
+
+		cc.vv.audioMgr.playSFX('SoundCommon/SEND_CARD0.mp3');
+
+		for (var i = 0; i < mjnum; i++) {
+			var mjnode = this.getMJItem(sideHolds, localIndex, i);
+			mjnode.active = true;
+		}
+
+		while (sideHolds.childrenCount > mjnum) {
+			var mjnode = sideHolds.children[mjnum];
+
+			this.putMJItem(sideHolds, localIndex, mjnode);
+		}
+
+		for (var i = 0; i < mjnum; i++) {
+			var idx = swap ? (mjnum - 1 - i) : i;
+			var mjnode = this.getMJItem(sideHolds, localIndex, idx);
+			var mj = mjnode.getComponent("SmartMJ");
+
+			this.setMJLocation(mjnode, localIndex, i, false, (i == 13));
+
+			mjnode.active = true;
+
+			mj.setFunction(0);
 		}
 	},
 
@@ -1913,7 +2072,7 @@ cc.Class({
                 var mjnode = this.getMJItem(sideHolds, localIndex, idx);
                 var mj = mjnode.getComponent("SmartMJ");
 
-				this.setMJLocation(mjnode, localIndex, index, true, (i == total - 1) && (total % 3 == 2));
+				this.setMJLocation(mjnode, localIndex, index, true, (index == total - 1) && (total % 3 == 2));
 
                 mjnode.active = true;
 
@@ -1950,7 +2109,7 @@ cc.Class({
                 var mjnode = this.getMJItem(sideHolds, localIndex, idx);
                 var mj = mjnode.getComponent("SmartMJ");
 
-				this.setMJLocation(mjnode, localIndex, idx, false, (i == mjnum - 1) && (mjnum % 3 == 2));
+				this.setMJLocation(mjnode, localIndex, i, false, (i == mjnum - 1) && (mjnum % 3 == 2));
 				
                 mjnode.active = true;
 

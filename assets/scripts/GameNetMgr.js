@@ -14,6 +14,7 @@ cc.Class({
         button:-1,
         chupai:-1,
         gamestate: '',
+        dices: null,
         isOver: false,
         dissoveData: null,
     },
@@ -24,6 +25,7 @@ cc.Class({
         this.button = -1;
         this.gamestate = '';
         this.curaction = null;
+		this.dices = null;
         for (var i = 0; i < this.seats.length; i++) {
             this.seats[i].holds = [];
             this.seats[i].folds = [];
@@ -293,9 +295,17 @@ cc.Class({
             var userId = data.userid;
             var seat = self.getSeatByID(userId);
             seat.ready = data.ready;
-            self.dispatchEvent('user_state_changed',seat);
+
+			if (self.gamestate == '') {
+				self.dispatchEvent('user_state_changed', seat);
+			}
         });
-        
+
+		cc.vv.net.addHandler("game_dice_push",function(data) {
+			self.dices = data;
+			self.dispatchEvent('game_dice', data);
+        });
+		
         cc.vv.net.addHandler("user_dingpiao_push",function(data) {
             var userId = data.userid;
             var seat = self.getSeatByID(userId);
@@ -304,12 +314,12 @@ cc.Class({
             self.dispatchEvent('user_state_changed', seat);
         });
         
-        cc.vv.net.addHandler("game_holds_push",function(data){
+        cc.vv.net.addHandler("game_holds_push",function(data) {
             var seat = self.seats[self.seatIndex]; 
             console.log(data);
             seat.holds = data;
             
-            for(var i = 0; i < self.seats.length; ++i){
+            for (var i = 0; i < self.seats.length; ++i) {
                 var s = self.seats[i]; 
                 if(s.folds == null){
                     s.folds = [];
@@ -342,13 +352,74 @@ cc.Class({
 
             self.dispatchEvent('game_holds');
         });
+
+		cc.vv.net.addHandler("game_holds_update_push", function(data) {
+			var seat = self.seats[self.seatIndex];
+
+			console.log('game_holds_update_push');
+
+            seat.holds = data;
+			self.dispatchEvent('game_holds_update');
+		});
+
+		cc.vv.net.addHandler("game_holds_len_push", function(data) {
+			var seatIndex = data.seatIndex;
+			var seat = self.seats[seatIndex];
+
+			console.log('game_holds_len_push');
+
+            seat.holdsLen = data.len;
+			self.dispatchEvent('game_holds_len', seat);
+		});
+
+		cc.vv.net.addHandler("game_holds_updated_push", function(data) {
+			console.log('game_holds_updated_push');
+			
+			self.dispatchEvent('game_holds_updated');
+		});
          
-        cc.vv.net.addHandler("game_begin_push",function(data){
-            console.log('game_action_push');
+        cc.vv.net.addHandler("game_begin_push", function(data) {
+            console.log('game_begin_push');
             console.log(data);
             self.button = data;
             self.turn = self.button;
             self.gamestate = "begin";
+
+			for (var i = 0; i < self.seats.length; i++) {
+                var s = self.seats[i]; 
+                if (s.folds == null) {
+                    s.folds = [];
+                }
+
+                if (s.pengs == null) {
+                    s.pengs = [];
+                }
+
+                if (s.angangs == null) {
+                    s.angangs = [];
+                }
+
+                if (s.diangangs == null) {
+                    s.diangangs = [];
+                }
+
+                if (s.wangangs == null) {
+                    s.wangangs = [];
+                }
+                
+                if (s.tings == null) {
+                    s.tings = [];
+                }
+                
+                if (s.kou == null) {
+                    s.kou = [];
+                }
+                
+                s.ready = false;
+                
+                self.dispatchEvent('user_state_changed', s);
+            }
+			
             self.dispatchEvent('game_begin');
         });
         
@@ -388,11 +459,13 @@ cc.Class({
 
 				seat.ready = false;
            }
-           
+
             for(var i = 0; i < self.numOfSeats; ++i) {
                 var seat = self.seats[i];
                 self.dispatchEvent('user_state_changed', seat);
             }
+
+			self.doSync();
         });
 
         cc.vv.net.addHandler("hangang_notify_push",function(data){

@@ -191,7 +191,7 @@ cc.Class({
             else{
                 console.log(ret.data);
                 callback(ret.data);
-            }       
+            }
         };
         
         var data = {
@@ -217,4 +217,73 @@ cc.Class({
 		cc.vv.wc.show(0);
         cc.vv.http.sendRequest("/get_game_goods", null, onGet, shopURL);
     },
+
+	getBindInfo: function(callback) {
+		var self = this;
+
+		var onGet = function(ret) {
+			if (ret.errcode !== 0) {
+                console.log(ret.errmsg);
+            } else {
+                console.log(ret.data);
+                callback(ret.data);
+            }
+		};
+
+		var data = {
+            account: cc.vv.userMgr.account,
+            sign: cc.vv.userMgr.sign,
+			uid: cc.vv.userMgr.userId,
+        };
+
+		cc.vv.http.sendRequest('/get_bind_info', data, onGet);
+    },
+
+	getAwards: function(callback) {
+		var self = this;
+
+		var onGet = function(ret) {
+			if (ret.errcode !== 0) {
+                console.log(ret.errmsg);
+				callback(false);
+            } else {
+                callback(true);
+            }
+		};
+
+		var data = {
+            account: cc.vv.userMgr.account,
+            sign: cc.vv.userMgr.sign,
+			uid: cc.vv.userMgr.userId,
+        };
+
+		cc.vv.http.sendRequest('/get_awards', data, onGet);
+    },
+
+	bind: function(bid, callback) {
+		var self = this;
+
+		var onGet = function(ret) {
+			if (ret.errcode !== 0) {
+                console.log(ret.errmsg);
+				callback(false);
+            } else {
+                callback(true);
+            }
+		};
+
+		var data = {
+            account: cc.vv.userMgr.account,
+            sign: cc.vv.userMgr.sign,
+			uid: cc.vv.userMgr.userId,
+			bid: bid,
+        };
+
+		cc.vv.http.sendRequest('/bind', data, onGet);
+    },
+
+	bindDone: function(callback) {
+		// TODO
+    },
 });
+

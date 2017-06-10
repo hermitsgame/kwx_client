@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "282d75bd-9d38-4ee8-a8c5-3da920f116cb",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "KWX_BingoIcon": {
+      "ver": "1.0.3",
+      "uuid": "47c33449-d87f-4145-80c3-b7a22ff2adb8",
+      "rawTextureUuid": "282d75bd-9d38-4ee8-a8c5-3da920f116cb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 75,
+      "height": 75,
+      "rawWidth": 75,
+      "rawHeight": 75,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

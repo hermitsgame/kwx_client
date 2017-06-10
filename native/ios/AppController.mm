@@ -31,6 +31,7 @@
 #import "RootViewController.h"
 #import "platform/ios/CCEAGLView-ios.h"
 #import "VoiceSDK.h"
+#import "IAPShare.h"
 
 @implementation AppController
 
@@ -87,6 +88,7 @@ static bool __isWxLogin = false;
     
     //向微信注册
     [WXApi registerApp:@"wxcb508816c5c4e2a4" withDescription:@"scmj"];
+
     return YES;
 }
 
@@ -102,6 +104,74 @@ static bool __isWxLogin = false;
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
     cocos2d::Director::getInstance()->pause();
+}
+
++(void) initProducts:(NSString*)products
+{
+    NSArray *array = [string componentsSeparatedByString:@","];
+    NSSet *dataSet = [NSSet setWithArray:array];
+
+    if(![IAPShare sharedHelper].iap) {
+        [IAPShare sharedHelper].iap = [[IAPHelper alloc] initWithProductIdentifiers:dataSet];
+    }
+
+    [IAPShare sharedHelper].iap.production = NO;
+
+    [[IAPShare sharedHelper].iap requestProductsWithCompletion:^(SKProductsRequest* request,SKProductsResponse* response)
+     {
+
+     }];
+}
+
++(void) buyProduct:(NSString*)product
+{
+    NSArray *products = [IAPShare sharedHelper].iap.products;
+    SKProduct *found = nil;
+
+    for (var i = 0; i < products.count; i++) {
+        SKProduct *tmp = [products objectAtIndex:i];
+        NSString *name = tmp.productIdentifier;
+
+        if ([name isEqualToString:product]) {
+            found = tmp;
+            break;
+        }
+    }
+    
+    if (!found) {
+        NSLog(@"product not found");
+        return;
+    }
+
+    [[IAPShare sharedHelper].iap buyProduct:found
+                                  onCompletion:^(SKPaymentTransaction* trans) {
+
+              if(trans.error)
+              {
+                  NSLog(@"Fail %@",[trans.error localizedDescription]);
+              }
+              else if(trans.transactionState == SKPaymentTransactionStatePurchased) {
+
+                  [[IAPShare sharedHelper].iap checkReceipt:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]] AndSharedSecret:@"your sharesecret" onCompletion:^(NSString *response, NSError *error) {
+
+                      //Convert JSON String to NSDictionary
+                      NSDictionary* rec = [IAPShare toJSON:response];
+
+                      if([rec[@"status"] integerValue]==0)
+                      {
+                          [[IAPShare sharedHelper].iap provideContentWithTransaction:trans];
+                          NSLog(@"SUCCESS %@",response);
+                          NSLog(@"Pruchases %@",[IAPShare sharedHelper].iap.purchasedProducts);
+                      }
+                      else {
+                          NSLog(@"Fail");
+                      }
+                  }];
+              }
+              else if(trans.transactionState == SKPaymentTransactionStateFailed) {
+                   NSLog(@"Fail");
+              }
+                                  }];//end of buy product
 }
 
 +(void) share:(NSString*)url shareTitle:(NSString*)title shareDesc:(NSString*)desc

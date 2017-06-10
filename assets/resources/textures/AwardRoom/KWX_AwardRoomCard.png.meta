@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "8e315340-c419-413d-bfef-6f032ba8b3f6",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "KWX_AwardRoomCard": {
+      "ver": "1.0.3",
+      "uuid": "596eb466-a2b6-40c0-ba63-8070d1bb2549",
+      "rawTextureUuid": "8e315340-c419-413d-bfef-6f032ba8b3f6",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 909,
+      "height": 93,
+      "rawWidth": 909,
+      "rawHeight": 93,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

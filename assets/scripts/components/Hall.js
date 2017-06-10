@@ -149,7 +149,9 @@ cc.Class({
                 }
             }
         };
-        
+
+		console.log('refreshInfo');
+		
         var data = {
             account:cc.vv.userMgr.account,
             sign:cc.vv.userMgr.sign,

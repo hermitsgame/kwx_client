@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        //tipLabel:cc.Label,
+        tipLabel:cc.Label,
         _stateStr:'',
         _progress:0.0,
         _splash:null,
@@ -11,12 +11,17 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        console.log('onLoad');
+
         if(!cc.sys.isNative && cc.sys.isMobile){
             var cvs = this.node.getComponent(cc.Canvas);
             cvs.fitHeight = true;
             cvs.fitWidth = true;
         }
+        
         this.initMgr();
+        
+        console.log('initMgr done');
         
         this._splash = cc.find("Canvas/splash");
         this._splash.active = true;
@@ -221,22 +226,20 @@ cc.Class({
         this.login();
     },
 
-/*
-    // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-        if(this._stateStr.length == 0){
+        if (this._stateStr.length == 0) {
             return;
         }
+
         this.tipLabel.string = this._stateStr + ' ';
-        if(this._isLoading){
+        if (this._isLoading) {
             this.tipLabel.string += Math.floor(this._progress * 100) + "%";   
         }
-        else{
+        else {
             var t = Math.floor(Date.now() / 1000) % 4;
-            for(var i = 0; i < t; ++ i){
+            for (var i = 0; i < t; ++ i) {
                 this.tipLabel.string += '.';
             }
         }
     }
-*/
 });

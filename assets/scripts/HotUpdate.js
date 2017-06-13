@@ -21,33 +21,33 @@ cc.Class({
     },
 
     checkCb: function (event) {
-        cc.log('Code: ' + event.getEventCode());
+        console.log('Code: ' + event.getEventCode());
         switch (event.getEventCode())
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-                cc.log("No local manifest file found, hot update skipped.");
-                cc.eventManager.removeListener(this._checkListener);
+                console.log("No local manifest file found, hot update skipped.");
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                cc.log("Fail to download manifest file, hot update skipped.");
-                cc.eventManager.removeListener(this._checkListener);
+                console.log("Fail to download manifest file, hot update skipped.");
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
-                cc.log("Already up to date with the latest remote version.");
+                console.log("Already up to date with the latest remote version.");
                 cc.eventManager.removeListener(this._checkListener);
                 this.lblErr.string += "游戏不需要更新\n";
                 cc.director.loadScene("loading");
-                break;
+                return;
             case jsb.EventAssetsManager.NEW_VERSION_FOUND:
                 this._needUpdate = true;
                 this.updatePanel.active = true;
                 this.percent.string = '00.00%';
-                cc.eventManager.removeListener(this._checkListener);
                 break;
             default:
-                break;
+                return;
         }
+
+        cc.eventManager.removeListener(this._checkListener);
+        this._checkListener = null;
         this.hotUpdate();
     },
 
@@ -57,7 +57,7 @@ cc.Class({
         switch (event.getEventCode())
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-                cc.log('No local manifest file found, hot update skipped.');
+                console.log('No local manifest file found, hot update skipped.');
                 failed = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_PROGRESSION:
@@ -66,27 +66,27 @@ cc.Class({
 
                 var msg = event.getMessage();
                 if (msg) {
-                    cc.log(msg);
+                    console.log(msg);
                 }
-                cc.log(percent.toFixed(2) + '%');
+                console.log(percent.toFixed(2) + '%');
                 this.percent.string = percent + '%';
                 break;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                cc.log('Fail to download manifest file, hot update skipped.');
+                console.log('Fail to download manifest file, hot update skipped.');
                 failed = true;
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
-                cc.log('Already up to date with the latest remote version.');
+                console.log('Already up to date with the latest remote version.');
                 failed = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_FINISHED:
-                cc.log('Update finished. ' + event.getMessage());
+                console.log('Update finished. ' + event.getMessage());
 
                 needRestart = true;
                 break;
             case jsb.EventAssetsManager.UPDATE_FAILED:
-                cc.log('Update failed. ' + event.getMessage());
+                console.log('Update failed. ' + event.getMessage());
 
                 this._failCount ++;
                 if (this._failCount < 5)
@@ -95,16 +95,16 @@ cc.Class({
                 }
                 else
                 {
-                    cc.log('Reach maximum fail count, exit update process');
+                    console.log('Reach maximum fail count, exit update process');
                     this._failCount = 0;
                     failed = true;
                 }
                 break;
             case jsb.EventAssetsManager.ERROR_UPDATING:
-                cc.log('Asset update error: ' + event.getAssetId() + ', ' + event.getMessage());
+                console.log('Asset update error: ' + event.getAssetId() + ', ' + event.getMessage());
                 break;
             case jsb.EventAssetsManager.ERROR_DECOMPRESS:
-                cc.log(event.getMessage());
+                console.log(event.getMessage());
                 break;
             default:
                 break;
@@ -112,11 +112,13 @@ cc.Class({
 
         if (failed) {
             cc.eventManager.removeListener(this._updateListener);
+            this._updateListener = null;
             this.updatePanel.active = false;
         }
 
         if (needRestart) {
             cc.eventManager.removeListener(this._updateListener);
+            this._updateListener = null;
             // Prepend the manifest's search path
             var searchPaths = jsb.fileUtils.getSearchPaths();
             var newPaths = this._am.getLocalManifest().getSearchPaths();
@@ -128,6 +130,7 @@ cc.Class({
 
             jsb.fileUtils.setSearchPaths(searchPaths);
             this.lblErr.string += "游戏资源更新完毕\n";
+            cc.audioEngine.stopAll();
             cc.game.restart();
         }
     },
@@ -137,6 +140,8 @@ cc.Class({
             this.lblErr.string += "开始更新游戏资源...\n";
             this._updateListener = new jsb.EventListenerAssetsManager(this._am, this.updateCb.bind(this));
             cc.eventManager.addListener(this._updateListener, 1);
+
+
 
             this._failCount = 0;
             this._am.update();
@@ -151,13 +156,70 @@ cc.Class({
         }
         this.lblErr.string += "检查游戏资源...\n";
         var storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'tiantianqipai-asset');
-        cc.log('Storage path for remote asset : ' + storagePath);
+        console.log('Storage path for remote asset : ' + storagePath);
         this.lblErr.string += storagePath + "\n";
-        cc.log('Local manifest URL : ' + this.manifestUrl);
-        this._am = new jsb.AssetsManager(this.manifestUrl, storagePath);
-        this._am.retain();
+        // Setup your own version compare handler, versionA and B is versions in string
+        // if the return value greater than 0, versionA is greater than B,
+        // if the return value equals 0, versionA equals to B,
+        // if the return value smaller than 0, versionA is smaller than B.
+        var versionCompareHandle = function (versionA, versionB) {
+            cc.log("JS Custom Version Compare: version A is " + versionA + ', version B is ' + versionB);
+            var vA = versionA.split('.');
+            var vB = versionB.split('.');
+            for (var i = 0; i < vA.length; ++i) {
+                var a = parseInt(vA[i]);
+                var b = parseInt(vB[i] || 0);
+                if (a === b) {
+                    continue;
+                }
+                else {
+                    return a - b;
+                }
+            }
+            if (vB.length > vA.length) {
+                return -1;
+            }
+            else {
+                return 0;
+            }
+        };
+        console.log('Local manifest URL : ' + this.manifestUrl);
+	this._am = new jsb.AssetsManager(this.manifestUrl, storagePath, versionCompareHandle);
+        if (!cc.sys.ENABLE_GC_FOR_NATIVE_OBJECTS) {
+            this._am.retain();
+        }
 
         this._needUpdate = false;
+        // Setup the verification callback, but we don't have md5 check function yet, so only print some message
+        // Return true if the verification passed, otherwise return false
+        this._am.setVerifyCallback(function (path, asset) {
+            // When asset is compressed, we don't need to check its md5, because zip file have been deleted.
+            var compressed = asset.compressed;
+            // Retrieve the correct md5 value.
+            var expectedMD5 = asset.md5;
+            // asset.path is relative path and path is absolute.
+            var relativePath = asset.path;
+            // The size of asset file, but this value could be absent.
+            var size = asset.size;
+            if (compressed) {
+                console.log("Verification passed : " + relativePath);
+                return true;
+            }
+            else {
+                console.log("Verification passed : " + relativePath + ' (' + expectedMD5 + ')');
+                return true;
+            }
+        });
+
+        if (cc.sys.os === cc.sys.OS_ANDROID) {
+            // Some Android device may slow down the download process when concurrent tasks is too much.
+            // The value may not be accurate, please do more test and find what's most suitable for your game.
+            this._am.setMaxConcurrentTask(2);
+            console.log("Max concurrent tasks count have been limited to 2");
+        }
+
+        console.log(this._am);
+
         if (this._am.getLocalManifest().isLoaded())
         {
             this._checkListener = new jsb.EventListenerAssetsManager(this._am, this.checkCb.bind(this));
@@ -168,6 +230,12 @@ cc.Class({
     },
 
     onDestroy: function () {
-        this._am && this._am.release();
+        if (this._updateListener) {
+            cc.eventManager.removeListener(this._updateListener);
+            this._updateListener = null;
+        }
+        if (this._am && !cc.sys.ENABLE_GC_FOR_NATIVE_OBJECTS) {
+            this._am.release();
+        }
     }
 });

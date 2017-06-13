@@ -152,16 +152,16 @@ static bool __isWxLogin = false;
               }
               else if(trans.transactionState == SKPaymentTransactionStatePurchased) {
 
-                  [[IAPShare sharedHelper].iap checkReceipt:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]] AndSharedSecret:@"your sharesecret" onCompletion:^(NSString *response, NSError *error) {
+                  [[IAPShare sharedHelper].iap checkReceipt:[NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]] AndSharedSecret:@"0b71da6ba04a48128683bc4ba8220878" onCompletion:^(NSString *response, NSError *error) {
 
                       //Convert JSON String to NSDictionary
                       NSDictionary* rec = [IAPShare toJSON:response];
 
                       if([rec[@"status"] integerValue]==0)
                       {
-                          [[IAPShare sharedHelper].iap provideContentWithTransaction:trans];
+                          //[[IAPShare sharedHelper].iap provideContentWithTransaction:trans];
                           NSLog(@"SUCCESS %@",response);
-                          NSLog(@"Pruchases %@",[IAPShare sharedHelper].iap.purchasedProducts);
+                          //NSLog(@"Pruchases %@",[IAPShare sharedHelper].iap.purchasedProducts);
                       }
                       else {
                           NSLog(@"Fail");

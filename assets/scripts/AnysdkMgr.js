@@ -31,7 +31,6 @@ cc.Class({
 	
     login:function(){
         if (cc.sys.os == cc.sys.OS_ANDROID) {
-			//cc.eventManager.removeCustomListeners(cc.game.EVENT_HIDE);
 
             jsb.reflection.callStaticMethod(this.ANDROID_API, "Login", "()V");
         }
@@ -46,7 +45,6 @@ cc.Class({
     share: function(title, desc, timeline) {
 
         if (cc.sys.os == cc.sys.OS_ANDROID) {
-			//cc.eventManager.removeCustomListeners(cc.game.EVENT_HIDE);
 
             jsb.reflection.callStaticMethod(this.ANDROID_API,
                                             "Share",
@@ -116,7 +114,33 @@ cc.Class({
         }
         setTimeout(fn,50);
     },
-    
+
+	initIAP: function(identifiers) {
+		if (!identifiers || identifiers.length == 0) {
+			return false;
+		}
+
+		var args = identifiers.join(',');
+
+		jsb.reflection.callStaticMethod(this.IOS_API, "initProducts", args);
+		return true;
+    },
+
+	buyIAP: function(identifier) {
+		if (cc.sys.os != cc.sys.OS_IOS) {
+			return false;
+		}
+
+		jsb.reflection.callStaticMethod(this.IOS_API, "buyProduct", identifier);
+		return true;
+	},
+
+	onBuyIAPResp: function(ret) {
+		console.log('onBuyIAPResp');
+
+		
+	},
+
     onLoginResp: function(code) {
     	console.log('onLoginResp');
         var fn = function(ret) {
@@ -133,20 +157,13 @@ cc.Class({
 		} else {
 			cc.vv.wc.hide();
 		}
-/*
-		cc.eventManager.addCustomListener(cc.game.EVENT_HIDE, function() {
-			cc.game.emit(cc.game.EVENT_HIDE, cc.game);
-		});
-*/
+
     },
 
 	onShareResp: function() {
 		console.log('onShareResp');
-/*
-		cc.eventManager.addCustomListener(cc.game.EVENT_HIDE, function() {
-			cc.game.emit(cc.game.EVENT_HIDE, cc.game);
-		});
-*/
+
+		
     },
 });
 

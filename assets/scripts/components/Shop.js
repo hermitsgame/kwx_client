@@ -29,6 +29,10 @@ cc.Class({
 
 	onBtnGoodsClicked: function(event) {
 		console.log('onBtnGoodsClicked');
+
+		var info = event.target.goodsInfo;
+
+		
     },
 
 	onBtnShopClicked: function(event) {

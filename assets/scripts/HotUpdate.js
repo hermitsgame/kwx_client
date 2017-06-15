@@ -26,11 +26,13 @@ cc.Class({
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
                 console.log("No local manifest file found, hot update skipped.");
-                break;
+				cc.director.loadScene("loading");
+                return;
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 console.log("Fail to download manifest file, hot update skipped.");
-                break;
+				cc.director.loadScene("loading");
+				return;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 console.log("Already up to date with the latest remote version.");
                 cc.eventManager.removeListener(this._checkListener);
@@ -184,7 +186,8 @@ cc.Class({
             }
         };
         console.log('Local manifest URL : ' + this.manifestUrl);
-	this._am = new jsb.AssetsManager(this.manifestUrl, storagePath, versionCompareHandle);
+
+		this._am = new jsb.AssetsManager('', storagePath, versionCompareHandle);
         if (!cc.sys.ENABLE_GC_FOR_NATIVE_OBJECTS) {
             this._am.retain();
         }
@@ -218,15 +221,19 @@ cc.Class({
             console.log("Max concurrent tasks count have been limited to 2");
         }
 
-        console.log(this._am);
+		if (this._am.getState() === jsb.AssetsManager.State.UNINITED) {
+			this._am.loadLocalManifest(this.manifestUrl);
+		}
 
-        if (this._am.getLocalManifest().isLoaded())
-        {
-            this._checkListener = new jsb.EventListenerAssetsManager(this._am, this.checkCb.bind(this));
-            cc.eventManager.addListener(this._checkListener, 1);
+		if (!this._am.getLocalManifest() || !this._am.getLocalManifest().isLoaded()) {
+			this.panel.info.string = 'Failed to load local manifest ...';
+			return;
+		}
 
-            this._am.checkUpdate();
-        }
+        this._checkListener = new jsb.EventListenerAssetsManager(this._am, this.checkCb.bind(this));
+        cc.eventManager.addListener(this._checkListener, 1);
+
+        this._am.checkUpdate();
     },
 
     onDestroy: function () {

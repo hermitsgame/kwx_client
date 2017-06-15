@@ -1,9 +1,9 @@
-(function () {
-    // 在 main.js 的开头添加如下代码
-    if (cc.sys.isNative) {
-        var hotUpdateSearchPaths = cc.sys.localStorage.getItem('HotUpdateSearchPaths');
-        if (hotUpdateSearchPaths) {
-            jsb.fileUtils.setSearchPaths(JSON.parse(hotUpdateSearchPaths));
+(function () { 
+
+    if (window.cc && cc.sys.isNative) { 
+        var hotUpdateSearchPaths = cc.sys.localStorage.getItem('HotUpdateSearchPaths'); 
+        if (hotUpdateSearchPaths) { 
+            jsb.fileUtils.setSearchPaths(JSON.parse(hotUpdateSearchPaths)); 
         }
     }
     function boot () {
